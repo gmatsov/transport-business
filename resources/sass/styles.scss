@@ -1,0 +1,45 @@
+$base-background: #e9ebee;
+$headers-color: #247ba0;
+
+h1, h2, h3, h4, h5, h6, .fas {
+    color: $headers-color;
+}
+
+#navbarSupportedContent {
+    text-align: center;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+    //background: #F8FAFC; /* pick your color */
+}
+
+main {
+    max-width: 960px;
+    border: green dashed 4px;
+    margin: 0 auto;;
+}
+
+#messages {
+    min-height: 50px;
+}
+
+.required {
+    color: red;
+    font-size: 1.2em;
+}
+
+@media only screen and (max-width: 1452px) {
+    main {
+        margin-left: 250px;
+    }
+}
+
+@media only screen and (max-width: 755px) {
+    main {
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,18 @@
+.refuels {
+    text-align: center;
+    p {
+        display: inline-block;
+        font-weight: bold;
+        padding: 0;
+    }
+
+    span {
+        display: inline-block;
+    }
+}
+
+@media only screen and (max-width: 1110px) {
+    .refuel-form {
+        float: none;
+    }
+}
