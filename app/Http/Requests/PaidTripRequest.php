@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatePaidTripRequest extends FormRequest
+class PaidTripRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class CreatePaidTripRequest extends FormRequest
     public function rules()
     {
         return [
-            'trip' => 'integer|between:1,9999',
+            'distance' => 'integer|between:1,9999',
             'price_per_km' => 'numeric|between:0.01,9.99'
         ];
     }
@@ -32,8 +32,8 @@ class CreatePaidTripRequest extends FormRequest
     public function messages()
     {
         return [
-            'trip.integer' => 'Изминати км трябва да е число между 1 и 9999 км.',
-            'trip.between' => 'Изминати км трябва да са между 1 и 9999 км.',
+            'distance.integer' => 'Изминати км трябва да е число между 1 и 9999 км.',
+            'distance.between' => 'Изминати км трябва да са между 1 и 9999 км.',
             'price_per_km.between' => 'Цена за км. трябва да е между 0.01 и 9.99',
             'price_per_km.numeric' => 'Цена за км. трябва да е между 0.01 и 9.99',
         ];

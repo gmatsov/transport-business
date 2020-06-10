@@ -8,7 +8,7 @@
 
 @endsection
 @section('content')
-    <h1 class="text-center">    {{ $truck->licence_plate}}</h1>
+    <h1 class="text-center">{{ $truck->licence_plate}}</h1>
     <div class="">
         <div class="m-1">
             <div><a href="{{route('refuel.create', $truck->id)}}" id="add_fuel"
@@ -20,8 +20,12 @@
                     платени км</a></div>
         </div>
         <div class="m-1">
-            <div><a href="{{route('refuel.truck', $truck->id)}}" id="show_refuels" class="btn btn-outline-info">Виж
+            <div><a href="{{route('refuel.truck', $truck->id)}}" id="show_refuels" class="btn btn-outline-info float-left mr-1">Виж
                     зареждания</a></div>
+        </div>
+        <div class="m-1">
+            <div><a href="{{route('paid-trip.truck', $truck->id)}}" id="show_refuels" class="btn btn-outline-info">Виж
+                    платени км</a></div>
         </div>
     </div>
     <div class="row p-4">
@@ -69,16 +73,22 @@
             </span></div>
             </div>
             <div>
-                <div class="border-bottom"><span><i class="fas fa-gas-pump"></i>Общо заредени литри</span> <span
+                <div class="border-bottom"><span><i class="fas fa-gas-pump"></i> Общо заредени литри</span> <span
                         class="float-right">{{$stats['total_quantity']}}</span></div>
             </div>
             <div>
-                <div class="border-bottom"><span><i class="fas fa-road"></i>Общо изминати км.</span> <span
+                <div class="border-bottom"><span><i class="fas fa-road"></i> Общо изминати км.</span> <span
                         class="float-right">{{number_format((float)$stats['total_mileage'], 2, '.', ' ')}}</span></div>
             </div>
             <div>
-                <div class="border-bottom"><span><i class="fas fa-road"></i>Общо платени км.</span> <span
-                        class="float-right">{{number_format((float)$stats['total_paid_trips'], 2, '.', ' ')}}</span></div>
+                <div class="border-bottom"><span><i class="fas fa-road"></i> Общо платени км.</span> <span
+                        class="float-right">{{number_format((float)$stats['total_paid_trips'], 2, '.', ' ')}}</span>
+                </div>
+            </div>
+            <div>
+                <div class="border-bottom"><span><i class="fas fa-euro-sign"></i> Средна цена гориво.</span> <span
+                        class="float-right">{{number_format((float)$stats['average_fuel_price'], 2, '.', ' ')}}</span>
+                </div>
             </div>
         </div>
     </div>

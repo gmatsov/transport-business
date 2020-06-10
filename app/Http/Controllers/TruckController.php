@@ -6,7 +6,6 @@ use App\Models\EmissionClass;
 use App\Http\Requests\CreateTruckRequest;
 use App\Http\Requests\UpdateTruckRequest;
 use App\Models\Truck;
-use Illuminate\Http\Request;
 
 class TruckController extends Controller
 {

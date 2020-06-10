@@ -39,4 +39,12 @@ Route::put('user/', 'UserController@changePassword')->name('password-change');
 
 Route::get('paid-trip/create/{truck_id}', 'PaidTripController@create')->name('paid-trip.create');
 
+Route::get('paid-trip/{trip_id}/edit', 'PaidTripController@edit')->name('paid-trip.edit');
+
 Route::post('paid-trip', 'PaidTripController@store')->name('paid-trip.store');
+
+Route::put('paid-trip/{paid_trip_id}', 'PaidTripController@update')->name('paid-trip.update');
+
+Route::delete('paid-trip/{paid_trip_id}', 'PaidTripController@destroy')->name('paid-trip.destroy');
+
+Route::get('paid-trip/truck/{truck_id}', 'PaidTripController@showByTruck')->name('paid-trip.truck');

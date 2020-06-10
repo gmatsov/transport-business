@@ -94,6 +94,7 @@ class RefuelController extends Controller
 
             return back()->with('success', 'Успешно изтрито зареждане');;
         }
+
         $next_refuel_trip = Refuel::where('id', $this->nextRefuelIdByTruck($id))->pluck('trip_odometer')->first();
 
         Refuel::where('id', $this->nextRefuelIdByTruck($id))->update(['trip_odometer' => $next_refuel_trip + $refuel->trip_odometer]);
@@ -106,6 +107,7 @@ class RefuelController extends Controller
     private function nextRefuelIdByTruck($id)
     {
         $truck_id = Refuel::where('id', $id)->pluck('truck_id')->first();
+
         return Refuel::where('truck_id', $truck_id)->where('id', '>', $id)->pluck('id')->first();
     }
 

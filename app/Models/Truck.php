@@ -25,6 +25,7 @@ class Truck extends Model
         $stats['total_quantity'] = 0;
         $stats['total_mileage'] = 0;
         $stats['total_paid_trips'] = 0;
+        $stats['average_fuel_price'] = 0;
 
         foreach ($refuels as $refuel) {
             $stats['total_quantity'] += intval($refuel->quantity);
@@ -32,7 +33,10 @@ class Truck extends Model
         };
         foreach ($paid_trips as $paid_trip) {
             $stats['total_paid_trips'] += intval($paid_trip->distance);
+            $stats['average_fuel_price'] += floatval($paid_trip->price_per_km);
         }
+
+        $stats['average_fuel_price'] = $stats['average_fuel_price'] / $paid_trips->count();
 
         return $stats;
     }

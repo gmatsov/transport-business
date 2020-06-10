@@ -6,7 +6,6 @@ use App\Http\Requests\PasswordChangeRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Symfony\Component\VarDumper\Dumper\DataDumperInterface;
 
 class UserController extends Controller
 {
@@ -25,9 +24,7 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, $id)
     {
-
         $user = User::where('id', $id)->first();
-
         $data = $request->all();
 
         User::find(auth()->id())->update([

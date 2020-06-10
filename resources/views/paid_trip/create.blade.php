@@ -34,7 +34,7 @@
                         <input type="number" name="distance" min="0" max="9999" placeholder="Изминати км"
                                class="form-control float-right col-md-6  @error('distance') is-invalid @enderror"
                                id="trip" value="{{old('distance')}}">
-                        @error('trip')
+                        @error('distance')
                         <div class="col-md-12 float-right text-right text-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -48,7 +48,7 @@
                         <div class="col-md-12 float-right text-right text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group">
+                    <div class="form-group text-center">
                         <input type="submit" value="Добави" class="btn btn-success submit mt-4" id="submit">
                     </div>
                 </form>
@@ -65,7 +65,11 @@
                     @foreach($trips as $trip)
                         <div class="border-bottom">
                             <span
-                                class="col-md-4 col-sm-4 col-4">{{date("F", mktime(0, 0, 0, $trip->reportingPeriod->month, 10))}} {{$trip->reportingPeriod->year}}</span>
+                                class="col-md-4 col-sm-4 col-4">
+                                <a href="{{route('paid-trip.edit', $trip->id)}}">
+                                    {{date("F", mktime(0, 0, 0, $trip->reportingPeriod->month, 10))}} {{$trip->reportingPeriod->year}}
+                                </a>
+                                </span>
                             <span class="col-md-3 col-sm-3 col-3">{{$trip->distance}}</span>
                             <span
                                 class="col-md-2 col-sm-2 col-2">{{number_format((float)$trip->price_per_km, 2, '.', ' ')}}</span>
@@ -74,7 +78,7 @@
                 </div>
                 <div class="col-md-12 text-center"><a href="{{route('truck.show', $truck->id)}}"
                                                       class="btn btn-success m-4">Назад към камиона</a>
+                </div>
             </div>
         </div>
-    </div>
 @endsection

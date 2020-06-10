@@ -14,20 +14,23 @@
                 <form method="post" action="{{route('refuel.store')}}" class="">
                     @csrf
                     <input type="number" name="truck_id" value="{{$truck->id}}" hidden>
-                    <h5>Отечетен период</h5>
-                    <select class="form-control col-md-6  float-left" name="month" id="month">
-                        @for($i = 1; $i<= 12; $i++)
-                            <option
-                                value="{{$i}}" {{date("F") == date("F", mktime(0, 0, 0, $i, 10)) ? 'selected' : ''}}>{{date("F", mktime(0, 0, 0, $i, 10))}}</option>
-                        @endfor
-                    </select>
-                    <select class="form-control col-md-6" name="year" id="year">
-                        @for($i = -1; $i<= 1; $i++)
-                            <option value="{{date("Y")+$i}}"
-                                {{(date("Y")+$i == date("Y")) ? 'selected' : ''}}>
-                                {{date("Y")+$i}}</option>
-                        @endfor
-                    </select>
+                    <div class="form-group">
+                        <h5>Отечетен период</h5>
+                        <select class="form-control col-md-6  float-left" name="month" id="month">
+                            @for($i = 1; $i<= 12; $i++)
+                                <option
+                                    value="{{$i}}" {{date("F") == date("F", mktime(0, 0, 0, $i, 10)) ? 'selected' : ''}}>{{date("F", mktime(0, 0, 0, $i, 10))}}</option>
+                            @endfor
+                        </select>
+                        <select class="form-control col-md-6" name="year" id="year">
+                            @for($i = -1; $i<= 1; $i++)
+                                <option value="{{date("Y")+$i}}"
+                                    {{(date("Y")+$i == date("Y")) ? 'selected' : ''}}>
+                                    {{date("Y")+$i}}</option>
+                            @endfor
+                        </select>
+
+                    </div>
                     <div class="form-group">
                         <label for="date"><i class="far fa-calendar-alt"></i> Дата</label>
                         <input type="date" name="date" value="{{date('Y-m-d')}}"
