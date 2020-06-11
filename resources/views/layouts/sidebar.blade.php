@@ -11,14 +11,14 @@
         </li>
     </ul>
     <div class="sidebar-header">
-        <h3 class="text-center p-2"><i class="fas fa-file-invoice"></i> Фактури</h3>
+        <h3 class="text-center p-2"><i class="fas fa-file-invoice"></i> Напомняния</h3>
     </div>
     <ul class="list-unstyled components mb-0">
         <li>
-            <a href="#" class="btn d-block border-bottom">Моите фактури</a>
+            <a href="#" class="btn d-block border-bottom">Напомняния</a>
         </li>
         <li>
-            <a href="#" class="btn  d-block border-bottom">Добави фактура</a>
+            <a href="#" class="btn  d-block border-bottom">Добави напомняне</a>
         </li>
     </ul>
     <div class="sidebar-header">
