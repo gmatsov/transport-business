@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('scripts')
-    <script src="{{ asset('js/edit_truck.js') }}" defer></script>
+    <script src="{{ asset('js/truck/edit.js') }}" defer></script>
 @endsection
 
 @section('content')

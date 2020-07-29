@@ -31,8 +31,7 @@ class CreateTruckRequest extends FormRequest
             'brand' => 'string|nullable',
             'model' => 'nullable|string',
             'production_year' => 'nullable|integer',
-            'horse_power' => 'nullable|integer|min:1'
-
+            'horse_power' => 'nullable|integer|between:1,1500',
         ];
     }
 
@@ -43,6 +42,7 @@ class CreateTruckRequest extends FormRequest
             'licence_plate.unique' => 'Регистрационния номер е зает',
             'vin.unique' => 'Номера на рамата е зает',
             'odometer.integer' => 'Километрите трябва да са цяло число от 1 до 1 000 000',
+            'horse_power.between' => 'Мощността трябва да е между 1 и 1500 к.с.',
         ];
     }
 }

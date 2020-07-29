@@ -36,7 +36,9 @@ class Truck extends Model
             $stats['average_fuel_price'] += floatval($paid_trip->price_per_km);
         }
 
-        $stats['average_fuel_price'] = $stats['average_fuel_price'] / $paid_trips->count();
+        if ($paid_trips->count() > 0) {
+            $stats['average_fuel_price'] = $stats['average_fuel_price'] / $paid_trips->count();
+        }
 
         return $stats;
     }
