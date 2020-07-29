@@ -16,15 +16,14 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = User::where('id', $id)->first();
+        $user = User::where('id', $id)->firstOrFail();
 
         return view('user.edit', compact('user'));
     }
 
-
     public function update(UpdateUserRequest $request, $id)
     {
-        $user = User::where('id', $id)->first();
+        $user = User::where('id', $id)->firstOrFail();
         $data = $request->all();
 
         User::find(auth()->id())->update([
@@ -35,7 +34,6 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('user.edit', $user)->with('success', 'Успешно променени данни за потребител');
-
     }
 
     public function changePassword(PasswordChangeRequest $request)
