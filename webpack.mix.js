@@ -12,12 +12,16 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .js('resources/js/add_truck.js', 'public/js')
-    .js('resources/js/edit_truck.js', 'public/js')
-    .js('resources/js/remove_truck.js', 'public/js')
+    .js('resources/js/truck/show.js', 'public/js/truck')
+    .js('resources/js/truck/create.js', 'public/js/truck')
+    .js('resources/js/truck/edit.js', 'public/js/truck')
+    .js('resources/js/truck/remove.js', 'public/js/truck')
+    .js('resources/js/add_reminder.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/reminder/index.scss', 'public/css/reminder')
+    .sass('resources/sass/reminder/show.scss', 'public/css/reminder')
     .sass('resources/sass/styles.scss', 'public/css')
     .sass('resources/sass/sidebar.scss', 'public/css')
     .sass('resources/sass/home-page-styles.scss', 'public/css')
-    .sass('resources/sass/show-truck.scss', 'public/css')
+    .sass('resources/sass/truck/show.scss', 'public/css/truck')
     .sass('resources/sass/create-refuel.scss', 'public/css');

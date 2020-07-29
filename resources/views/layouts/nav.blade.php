@@ -2,11 +2,11 @@
     <div class="container">
         @guest()
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Transport Business') }}
+                {{--                {{ config('app.name', 'Transport Business') }}--}}
             </a>
         @else
             <a class="navbar-brand" href="{{ url('home') }}">
-                {{ config('app.name', 'Transport Business') }}
+
             </a>
         @endguest
 
@@ -18,12 +18,18 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
+            @guest()
+            @else
+                <ul class="navbar-nav mr-auto d-md-none">
+                    <li class="nav-item"><a class="nav-link" href="{{route('truck.index')}}">Камиони</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('reminder.index')}}">Напомяния</a>
+                    </li>
+                </ul>
+        @endguest
 
-            </ul>
-
-            <!-- Right Side Of Navbar -->
+        <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
+
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">

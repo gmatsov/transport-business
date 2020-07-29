@@ -48,3 +48,7 @@ Route::put('paid-trip/{paid_trip_id}', 'PaidTripController@update')->name('paid-
 Route::delete('paid-trip/{paid_trip_id}', 'PaidTripController@destroy')->name('paid-trip.destroy');
 
 Route::get('paid-trip/truck/{truck_id}', 'PaidTripController@showByTruck')->name('paid-trip.truck');
+
+Route::resource('reminder', 'ReminderController');
+
+Route::post('reminder/{reminder_id}/mark-complete', 'ReminderController@markComplete')->name('reminder.complete');
