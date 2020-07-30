@@ -95,6 +95,10 @@
                             class="float-right">{{$stats['total_quantity']}}</span></div>
                 </div>
                 <div>
+                    <div class="border-bottom"><span><i class="fas fa-euro-sign"></i> Средна цена за литър</span> <span
+                            class="float-right">{{number_format((float)$stats['average_price_per_liter'], 2, '.', ' ')}}</span></div>
+                </div>
+                <div>
                     <div class="border-bottom"><span><i class="fas fa-road"></i> Общо изминати км.</span> <span
                             class="float-right">{{number_format((float)$stats['total_mileage'], 2, '.', ' ')}}</span>
                     </div>
@@ -105,8 +109,8 @@
                     </div>
                 </div>
                 <div>
-                    <div class="border-bottom"><span><i class="fas fa-euro-sign"></i> Средна цена гориво.</span> <span
-                            class="float-right">{{number_format((float)$stats['average_fuel_price'], 2, '.', ' ')}}</span>
+                    <div class="border-bottom"><span><i class="fas fa-euro-sign"></i> Средна цена за км.</span> <span
+                            class="float-right">{{number_format((float)$stats['average_price_per_km'], 2, '.', ' ')}}</span>
                     </div>
                 </div>
             </div>

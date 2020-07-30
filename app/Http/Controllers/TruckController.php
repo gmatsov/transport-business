@@ -56,10 +56,9 @@ class TruckController extends Controller
 
     public function update(UpdateTruckRequest $request)
     {
-        Truck::find($request->truck_id)->update($request->all());
+        Truck::findOrFail($request->truck_id)->update($request->all());
 
         return response()->json(['success' => 'Успешно променени данни']);
-
     }
 
     public function destroy($id)

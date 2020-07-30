@@ -18,9 +18,9 @@ class PaidTripController extends Controller
 
     public function showByTruck($truck_id)
     {
-        $trips = PaidTrip::where('truck_id', $truck_id)->orderBy('reporting_period_id', 'desc')->paginate(10);
+        $trips = PaidTrip::where('truck_id', $truck_id)->orderBy('reporting_period_id', 'desc')->paginate(15);
 
-        return view('paid_trip.show_by_truck', compact('trips'));
+        return view('paid_trip.show_by_truck', compact('trips', 'truck_id'));
     }
 
     public function create($truck_id)

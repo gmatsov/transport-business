@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('styles')
-
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 @endsection
 @section('content')
-    <h1 class="text-center">Платени километри</h1>
+    <h1 class="text-center">Платени
+        километри {{count($trips) != NULL ? 'за '. $trips[0]->truckData->licence_plate : ''}}</h1>
     <div>
-        <table class="table table-responsive text-center ">
+        <table class="table text-center table-striped row-sm">
             <thead>
             <tr>
                 <th>Отчетен период</th>
@@ -29,7 +30,7 @@
                               method="POST">
                             @method('delete')
                             @csrf
-                            <input type="submit" value="Изтрии" class="btn btn-danger"
+                            <input type="submit" value="Изтрии" class="btn btn-danger btn-sm"
                                    onclick="return confirm('Сигурен ли си че искаш да изтриеш?');">
                         </form>
                     </td>
@@ -39,6 +40,6 @@
             </tbody>
         </table>
     </div>
-    <div class="col-md-12 text-center"><a href="{{route('truck.show', $trips->first()->truck_id)}}"
+    <div class="col-md-12 text-center"><a href="{{route('truck.show', $truck_id)}}"
                                           class="btn btn-success m-4">Назад към камиона</a>
 @endsection

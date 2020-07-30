@@ -25,19 +25,24 @@ class Truck extends Model
         $stats['total_quantity'] = 0;
         $stats['total_mileage'] = 0;
         $stats['total_paid_trips'] = 0;
-        $stats['average_fuel_price'] = 0;
-
+        $stats['average_price_per_km'] = 0;
+        $stats['average_price_per_liter'] = 0;
         foreach ($refuels as $refuel) {
             $stats['total_quantity'] += intval($refuel->quantity);
             $stats['total_mileage'] += intval($refuel->trip_odometer);
+            $stats['average_price_per_liter'] += (intval($refuel->price) / intval($refuel->quantity));
+
         };
         foreach ($paid_trips as $paid_trip) {
             $stats['total_paid_trips'] += intval($paid_trip->distance);
-            $stats['average_fuel_price'] += floatval($paid_trip->price_per_km);
+            $stats['average_price_per_km'] += floatval($paid_trip->price_per_km);
+        }
+        if ($refuels->count() > 0) {
+            $stats['average_price_per_liter'] = $stats['average_price_per_liter'] / $refuels->count();
         }
 
         if ($paid_trips->count() > 0) {
-            $stats['average_fuel_price'] = $stats['average_fuel_price'] / $paid_trips->count();
+            $stats['average_price_per_km'] = $stats['average_price_per_km'] / $paid_trips->count();
         }
 
         return $stats;

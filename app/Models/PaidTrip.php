@@ -12,4 +12,8 @@ class PaidTrip extends Model
     {
         return $this->belongsTo(ReportingPeriod::class, 'reporting_period_id');
     }
+    public function truckData()
+    {
+        return $this->belongsTo(Truck::class, 'truck_id');
+    }
 }

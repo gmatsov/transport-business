@@ -8,7 +8,8 @@ h1, h2, h3, h4, h5, h6, .fas {
 #navbarSupportedContent {
     text-align: center;
 }
-.navbar-brand{
+
+.navbar-brand {
     background-image: url("/img/logo.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -41,6 +42,20 @@ main {
     color: red;
     font-size: 1.2em;
 }
+
+/*Smaller table rows and buttons*/
+.row-sm td {
+    height: 20px;
+    padding: 0;
+    border-top: 0;
+}
+
+.btn-sm {
+    margin: 3px;
+    padding: 3px 12px;
+}
+
+/*End of*/
 
 @media only screen and (max-width: 1452px) {
     main {

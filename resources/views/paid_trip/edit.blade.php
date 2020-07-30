@@ -8,7 +8,7 @@
 @section('content')
     <div class="container">
         <h1 class="text-center mb-4">Промяна на платени километри за камион {{$truck}}</h1>
-        <div class="row align-content-center">
+        <div class="align-content-center">
             <div>
                 <form method="post" action="{{route('paid-trip.update', $paid_trip->id)}}">
                     @method('PUT')
