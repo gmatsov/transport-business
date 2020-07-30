@@ -24,23 +24,17 @@ class UpdateRefuelRequest extends FormRequest
      */
     public function rules()
     {
-        dd($this->all() );
-
-        $min_odometer = Truck::where('id', $this->truck_id)->pluck('odometer')->first() + 1;
         return [
             'date' => 'date|before:tomorrow',
             'quantity' => 'required|numeric|between:0.01,2000',
             'price' => 'required|numeric|between:0.01,5000',
-            'current_odometer' => 'integer|between:' . $min_odometer . ',999999',
-            'note' => 'nullable|string',
+            'current_odometer' => 'integer|between:1,999999',
+            'note' => 'nullable|string|max:255',
         ];
     }
 
-
     public function messages()
     {
-        $min_odometer = Truck::where('id', $this->truck_id)->pluck('odometer')->first();
-
         return [
             'date' => 'Невалидна дата',
             'date.before' => 'Не може да зареждате с дата в бъдещето',
@@ -48,7 +42,8 @@ class UpdateRefuelRequest extends FormRequest
             'quantity.between' => 'Количеството трябва да бъде между 0.01 и 2000.00 литра',
             'price.required' => 'Задължително поле Цена',
             'price.between' => 'Цената трябва да бъде между 0.01 и 5000.00 Евро',
-            'current_odometer.between' => 'Километража трябва дa бъде между ' . $min_odometer . ' и 999 999 км.'
+            'current_odometer.between' => 'Километража трябва дa бъде между 1 и 999 999 км.',
+            'note.max' => 'Максимална дължина на бележката 255 символа'
         ];
     }
 }

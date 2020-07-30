@@ -25,9 +25,9 @@ class RefuelController extends Controller
 
     public function showByTruck($truck_id)
     {
-        $refuels = Refuel::where('truck_id', $truck_id)->orderBy('id', 'desc')->paginate(9);
+        $refuels = Refuel::where('truck_id', $truck_id)->orderBy('id', 'desc')->paginate(15);
 
-        return view('refuel.show_by_truck', compact('refuels'));
+        return view('refuel.show_by_truck', compact('refuels', 'truck_id'));
     }
 
     public function create($truck_id)
@@ -56,6 +56,7 @@ class RefuelController extends Controller
 
         Truck::where('id', $request['truck_id'])->update(['odometer' => $request['current_odometer']]);
         Refuel::create($request->all());
+
         return redirect()->back()->with('success', 'Успесно добавено зареждане');
 
     }
@@ -69,7 +70,7 @@ class RefuelController extends Controller
 
     public function edit($id)
     {
-        $refuel = Refuel::where('id', $id)->first();
+        $refuel = Refuel::where('id', $id)->firstOrFail();
 
         return view('refuel.edit', compact('refuel'));
     }
@@ -77,8 +78,26 @@ class RefuelController extends Controller
 
     public function update(UpdateRefuelRequest $request, $refuel_id)
     {
-        $refuel = Refuel::where('id', $refuel_id)->first();
+        if ($this->isLastRefuel($refuel_id)) {
 
+            $old_trip_odometer = Refuel::findOrFail($refuel_id)->trip_odometer;
+            $old_current_odometer = Refuel::findOrFail($refuel_id)->current_odometer;
+            $new_trip_odometer = $old_trip_odometer + ($request->current_odometer - $old_current_odometer);
+            $truck_id = Refuel::findOrFail($refuel_id)->truck_id;
+
+            if ($new_trip_odometer < 1) {
+                $min_current_odometer = Refuel::where('truck_id', $truck_id)->orderBy('created_at', 'desc')->offset(1)->take(1)->pluck('current_odometer')->first() + 1;
+
+                return back()->with('error', 'Минимална стойност на километража: ' . $min_current_odometer . ' км');
+            }
+            $request->request->add(['trip_odometer' => $new_trip_odometer]);
+            Refuel::findOrFail($refuel_id)->update($request->all());
+            Truck::findOrFail($truck_id)->update(['odometer' => $request->current_odometer]);
+
+
+            return redirect()->back()->with('success', 'Успешно променено зареждане');
+
+        }
     }
 
     public function destroy($id)
@@ -119,5 +138,6 @@ class RefuelController extends Controller
         if ($last_inserted_by_truck == $id) {
             return true;
         }
+        return false;
     }
 }

@@ -50,8 +50,8 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="price"><i class="fas fa-euro-sign"></i> Цена</label>
-                        <input type="number" step="0.01" min="1" placeholder="цена е Евро" name="price"
+                        <label for="price"><i class="fas fa-euro-sign"></i> Обща сума</label>
+                        <input type="number" step="0.01" min="1" placeholder="стойност в Евро" name="price"
                                class="form-control float-right col-md-6  @error('price') is-invalid @enderror"
                                id="price" value="{{old('price')}}">
                         @error('price')
