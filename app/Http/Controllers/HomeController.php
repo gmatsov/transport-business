@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reminder;
 use App\Models\Truck;
+use phpDocumentor\Reflection\Types\Collection;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $reminders = self::getReminders();
+
+        return view('home', compact('reminders'));
+    }
+
+    private function getReminders(): object
+    {
+        $unfinished_reminders = Reminder::where('finished_at', NULL)->where('closed', 0)->get();
+        $reminders = collect();
+
+        foreach ($unfinished_reminders as $reminder) {
+            if ($reminder->by_odometer)
+                if ($reminder->truckData->odometer >= $reminder->by_odometer - $reminder->km_before) {
+                    $reminders->add($reminder);
+                }
+            if ($reminder->by_date) {
+                if (strtotime('- ' . $reminder->days_before . ' days', strtotime($reminder->by_date)) <= strtotime(today())) {
+                    $reminders->add($reminder);
+                }
+            }
+        }
+
+        return $reminders;
     }
 }

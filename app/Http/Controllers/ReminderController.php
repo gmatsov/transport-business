@@ -80,6 +80,13 @@ class ReminderController extends Controller
         return back()->with('success', 'Напомнянето е подновено');
     }
 
+    public function close($id)
+    {
+        Reminder::where('id', $id)->update(['closed' => 1]);
+
+        return redirect()->back();
+    }
+
     public function update(ReminderRequest $request, $id)
     {
         if ($request->remind_by_odometer) {

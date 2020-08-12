@@ -52,3 +52,10 @@ Route::get('paid-trip/truck/{truck_id}', 'PaidTripController@showByTruck')->name
 Route::resource('reminder', 'ReminderController');
 
 Route::post('reminder/{reminder_id}/mark-complete', 'ReminderController@markComplete')->name('reminder.complete');
+
+Route::put('reminder/{reminder_id}/close', 'ReminderController@close')->name('reminder.close');
+
+Route::get('report', 'ReportController@index')->name('report.index');
+
+Route::get('report/show', 'ReportController@show')->name('report.show');
+

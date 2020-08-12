@@ -7,7 +7,7 @@
 
 @endsection
 @section('content')
-    <h1 class="text-center">Промени напомняне</h1>
+    <h1 class="text-center">Редактирай напомняне</h1>
 
     <div class="p-4">
         <form method="post" action="{{route('reminder.update', $reminder->id)}}">
@@ -193,7 +193,7 @@
                 <div class="help-block"></div>
             </div>
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-success">Добави напомняне</button>
+                <button type="submit" class="btn btn-success">Редактирай напомняне</button>
             </div>
         </form>
     </div>
