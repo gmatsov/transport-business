@@ -12,6 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .js('resources/js/dashboard.js', 'public/js')
     .js('resources/js/truck/show.js', 'public/js/truck')
     .js('resources/js/truck/create.js', 'public/js/truck')
     .js('resources/js/truck/edit.js', 'public/js/truck')
