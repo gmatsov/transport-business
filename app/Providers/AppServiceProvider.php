@@ -26,7 +26,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $charts->register([
             \App\Charts\KmTraveledChart::class,
-            \App\Charts\NumberOfTrucksChart::class
+            \App\Charts\NumberOfTrucksChart::class,
+            \App\Charts\AverageFuelConsumptionChart::class,
+            \App\Charts\AverageFuelPriceChart::class,
         ]);
     }
 }

@@ -25,7 +25,6 @@ const traveled_km_chart = new Chartisan({
             .tooltip(true)
 
     })
-;
 
 const number_of_trucks = new Chartisan({
     el: '#number_of_trucks',
@@ -51,3 +50,52 @@ const number_of_trucks = new Chartisan({
 
 })
 
+const avg_fuel_consumption = new Chartisan({
+    el: '#avg_fuel_consumption_chart',
+    url: "api/chart/avg_fuel_consumption_chart",
+    loader: {
+        color: '#247ba0',
+        size: [30, 30],
+        type: 'bar',
+        textColor: '#000000',
+        text: 'Зареждам данни...',
+    },
+    error: {
+        color: '#247ba0',
+        size: [30, 30],
+        text: 'Възникна грешка...',
+        textColor: '#247ba0',
+        type: 'general',
+        debug: true,
+    },
+    hooks: new ChartisanHooks()
+        .datasets([  {type: 'line', fill: false}])
+        // .colors(['#ECC94B', '#4299E1'])
+        .legend()
+        .tooltip()
+
+})
+
+const avg_fuel_price = new Chartisan({
+    el: '#avg_fuel_price_chart',
+    url: "api/chart/avg_fuel_price_chart",
+    loader: {
+        color: '#247ba0',
+        size: [30, 30],
+        type: 'bar',
+        textColor: '#000000',
+        text: 'Зареждам данни...',
+    },
+    error: {
+        color: '#247ba0',
+        size: [30, 30],
+        text: 'Възникна грешка...',
+        textColor: '#247ba0',
+        type: 'general',
+        debug: true,
+    },
+    hooks: new ChartisanHooks()
+        .datasets([  {type: 'line'}])
+        .colors(['#4299E1'])
+        .tooltip()
+})
