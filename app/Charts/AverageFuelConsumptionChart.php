@@ -27,19 +27,19 @@ class AverageFuelConsumptionChart extends BaseChart
     public function handler(Request $request): Chartisan
     {
         $months = [];
-        $fuel_consumption_this_reporting_period = [];
-        $fuel_consumption_last_reporting_period = [];
         $trucks_data = Truck::all('id','licence_plate');
         $current_reporting_period = ReportingPeriod::where('year', date('Y'))->where('month', date('m'))->pluck('id')->first();
-
 
         for ($i = 5; $i >= 0; $i--) {
             array_push($months, date('M Y', strtotime('-' . $i . ' months')));
         }
+
         $chart = Chartisan::build()
             ->labels($months);
+
         foreach ($trucks_data as $truck_data) {
             $data = [];
+
             for ($i = $current_reporting_period - 5; $i <= $current_reporting_period; $i++) {
                 $avg_fuel_cons = DB::select(
                     'SELECT ROUND((SUM(refuels.quantity) / SUM(refuels.trip_odometer))* 100,2) as avg_fuel_consumption
@@ -48,16 +48,9 @@ class AverageFuelConsumptionChart extends BaseChart
                     ' AND refuels.reporting_period_id = ' . $i . ' ')[0]->avg_fuel_consumption;
                 array_push($data, $avg_fuel_cons);
             }
+
             $chart->dataset($truck_data->licence_plate, $data);
-
-
         }
-
-
-
-
-
-
         return $chart;
     }
 }

@@ -25,7 +25,6 @@ class NumberOfTrucksChart extends BaseChart
     {
         $number_of_trucks = Truck::all()->count();
 
-
         return Chartisan::build()
             ->labels([$number_of_trucks])
             ->dataset('Брой камиони', [$number_of_trucks]);

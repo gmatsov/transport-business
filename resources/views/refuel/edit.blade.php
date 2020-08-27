@@ -9,6 +9,7 @@
         <form action="{{route('refuel.update', $refuel->id)}}" method="post">
             @method('put')
             @csrf
+
             <div class="form-group">
                 <label for="date"><i class="far fa-calendar-alt"></i> Дата</label>
                 <input type="date" name="date" value="{{$refuel->date}}"

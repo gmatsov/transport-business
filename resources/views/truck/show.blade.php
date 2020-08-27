@@ -15,7 +15,7 @@
     <div class="">
         <div class="m-1">
             <div><a href="{{route('refuel.create', $truck->id)}}" id="add_fuel"
-                    class="btn btn-outline-info float-left m-1">
+                    class="btn btn-outline-info float-left mb-1 mt-1">
                     <i class="fas fa-plus"></i> Гориво </a></div>
         </div>
         <div class="m-1">
