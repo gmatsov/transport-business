@@ -1,23 +1,47 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+@section('scripts')
+    <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
+    <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
+    <script src="{{ asset('js/dashboard.js') }}" defer></script>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
+
+@section('content')
+    @foreach($reminders as $reminder)
+        <div class="alert alert-danger">
+            <a href="{{route('truck.show', $reminder->truck_id)}}">{{$reminder->truckData->licence_plate}}</a> :
+            <a href="{{route('reminder.show', $reminder->id)}}">{{$reminder->title}}</a> {{$reminder->note}}
+            <form class="d-inline " method="post"
+                  action="{{route('reminder.close', $reminder->id)}}">
+                @csrf
+                @method('put')
+                <button
+                    type="submit" class="close">x
+                </button>
+            </form>
+        </div>
+    @endforeach
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+
+    <div id="traveled_km_chart" style="height: 250px ;" class="col-md-8 d-inline-block p-0">
+        <h4 class="text-center">Изминати километри</h4>
+    </div>
+
+    <div id="number_of_trucks" style="height: 250px;" class="col-md-3 mb-3 d-inline-block">
+        <h4 class="text-center">Брой камиони</h4>
+    </div>
+
+    <div id="avg_fuel_consumption_chart" style="height: 250px;" class="col-md-6 d-inline-block m-0">
+        <h4 class="text-center">Среден разход в литри</h4>
+    </div>
+
+    <div id="avg_fuel_price_chart" style="height: 250px;" class="col-md-5 d-inline-block m-0">
+        <h4 class="text-center">Среднa цена на гориво в Евро</h4>
+    </div>
+@endsection
+

@@ -28,10 +28,13 @@
                     Зареждания</a></div>
         </div>
         <div class="m-1">
-            <div><a href="{{route('paid-trip.truck', $truck->id)}}" id="show_refuels" class="btn btn-outline-info"><i class="fas fa-eye"></i>
+            <div><a href="{{route('paid-trip.truck', $truck->id)}}"
+                    class="btn btn-outline-info"><i
+                        class="fas fa-eye"></i>
                     Платени км</a></div>
         </div>
     </div>
+
     <div class="row p-4">
         <div class=" float-left truck-data pr-2">
             <div class="show_truck_header">Данни за МПС</div>
@@ -75,13 +78,15 @@
                 <li class="active" id="show_stats_tab">
                     <i class="fa fa-bar-chart"> </i>&nbsp;Статистики &nbsp;&nbsp;
                 </li>
-                <li id="show_reminder_tab">
+                <li class="mr-2" id="show_reminder_tab">
                     <i class="fa fa-bell"> </i>&nbsp;Напомняния
                     @if(count($reminders) > 0)
                         <span id="reminder_count"> {{count($reminders)}}</span>
                     @endif
                 </li>
-
+                <li id="show_refuels_tab">
+                    <i class="fa fa-gas-pump"> </i>&nbsp;Зареждания &nbsp;&nbsp;
+                </li>
             </ul>
             <div id="stats_tab">
                 <div>
@@ -96,7 +101,8 @@
                 </div>
                 <div>
                     <div class="border-bottom"><span><i class="fas fa-euro-sign"></i> Средна цена за литър</span> <span
-                            class="float-right">{{number_format((float)$stats['average_price_per_liter'], 2, '.', ' ')}}</span></div>
+                            class="float-right">{{number_format((float)$stats['average_price_per_liter'], 2, '.', ' ')}}</span>
+                    </div>
                 </div>
                 <div>
                     <div class="border-bottom"><span><i class="fas fa-road"></i> Общо изминати км.</span> <span
@@ -166,6 +172,34 @@
                     </div>
                 @endforeach
             </div>
+            <div id="refuels_tab" style="display: none">
+                <div class="refuels">
+                    <div>
+                        <p class="col-md-3 col-sm-3 col-3">Дата</p>
+                        <p class="col-md-3 col-sm-3 col-3">Километраж</p>
+                        <p class="col-md-2 col-sm-2 col-2">Дистанция</p>
+                        <p class="col-md-2 col-sm-2 col-2">Количество</p>
+                        <p class="col-md-1 col-sm-1 col-1">Ø</p>
+                    </div>
+                    @foreach($refuels as $refuel)
+                        <div class="border-bottom">
+                            <span
+                                class="col-md-3 col-sm-3 p-0 col-3">
+                                <a href="{{route('refuel.edit', $refuel->id)}}"
+                                   title="Промени">{{date( 'd M Y',strtotime( $refuel->date))}}</a></span>
+                            <span
+                                class="col-md-3 col-sm-3 p-0 col-3">{{number_format((integer)$refuel->current_odometer, 0, '', ' ')}}</span>
+                            <span
+                                class="col-md-2 col-sm-2 p-0 col-2">{{number_format( (integer)$refuel->trip_odometer, 0, '', ' ')}}</span>
+                            <span
+                                class="col-md-2 col-sm-2 p-0 col-2">{{number_format((float)$refuel->quantity, 2, '.', ' ')}}</span>
+                            <span
+                                class="col-md-1 col-sm-1 p-0 col-1">{{number_format(((float)$refuel->quantity*100)/$refuel->trip_odometer, 2, '.', ' ')}}</span>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="">

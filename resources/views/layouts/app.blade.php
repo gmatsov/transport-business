@@ -7,11 +7,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{str_replace('_', ' ',config('app.name'))}}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/354cc2ddb6.js" crossorigin="anonymous"></script>
+
 @yield('scripts')
 
 <!-- Fonts -->
@@ -47,7 +48,7 @@
             @endif
         </div>
 
-        @yield('content')
+    @yield('content')
 </div>
 </main>
 @include('layouts.footer')

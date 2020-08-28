@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\EmissionClass;
 use App\Http\Requests\CreateTruckRequest;
 use App\Http\Requests\UpdateTruckRequest;
+use App\Models\Refuel;
 use App\Models\Reminder;
 use App\Models\Truck;
 
@@ -40,10 +41,10 @@ class TruckController extends Controller
     {
         $truck = Truck::where(['id' => $id])->firstOrFail();
         $reminders = Reminder::where('truck_id', $id)->whereNull('finished_at')->get();
-
+        $refuels = Refuel::where('truck_id', $id)->orderBy('id', 'desc')->take(8)->get();
         $stats = Truck::truckStats($id);
 
-        return view('truck.show', compact('truck', 'stats', 'reminders'));
+        return view('truck.show', compact('truck', 'stats', 'reminders', 'refuels'));
     }
 
     public function edit($id)
