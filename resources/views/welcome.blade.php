@@ -3,3 +3,6 @@
 @endsection
 
 @include('layouts.app')
+@section('content')
+<div>sd</div>
+@endsection

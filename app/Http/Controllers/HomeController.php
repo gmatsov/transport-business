@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reminder;
-use App\Models\Truck;
-use phpDocumentor\Reflection\Types\Collection;
+use App\Models\ReportingPeriod;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -15,7 +15,12 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('welcome');
+    }
+
+    public function welcome()
+    {
+        return view('welcome');
     }
 
     /**

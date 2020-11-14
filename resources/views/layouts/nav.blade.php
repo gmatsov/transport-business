@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-md">
     <div class="container">
         @guest()
-            <a class="navbar-brand" href="{{ url('/') }}">
+{{--            <span class="navbar-brand"></span>--}}
                 {{--                {{ config('app.name', 'Transport Business') }}--}}
-            </a>
+            </span>
         @else
             <a class="navbar-brand" href="{{ url('home') }}">
 

@@ -17,15 +17,22 @@
             <div><a href="{{route('refuel.create', $truck->id)}}" id="add_fuel"
                     class="btn btn-outline-info float-left mb-1 mt-1">
                     <i class="fas fa-plus"></i> Гориво </a></div>
+            <div><a href="#" id="add_parking_tax"
+                    class="btn btn-outline-info float-left m-1">
+                    <i class="fas fa-plus"></i> Паркинги ТОДО</a></div>
         </div>
         <div class="m-1">
             <div><a href="{{route('paid-trip.create', $truck->id)}}" id="show_refuels" class="btn btn-outline-info m-1">
                     <i class="fas fa-plus"></i> Платени км</a></div>
         </div>
+
         <div class="m-1">
             <div><a href="{{route('refuel.truck', $truck->id)}}" id="show_refuels"
                     class="btn btn-outline-info float-left mr-1"><i class="fas fa-eye"></i>
                     Зареждания</a></div>
+            <div><a href="#" id="show_refuels"
+                    class="btn btn-outline-info float-left mr-1"><i class="fas fa-eye"></i>
+                    Разходи</a></div>
         </div>
         <div class="m-1">
             <div><a href="{{route('paid-trip.truck', $truck->id)}}"
@@ -33,6 +40,7 @@
                         class="fas fa-eye"></i>
                     Платени км</a></div>
         </div>
+
     </div>
 
     <div class="row p-4">

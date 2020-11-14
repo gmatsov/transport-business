@@ -68,3 +68,12 @@ main {
         margin: 0 auto;
     }
 }
+
+@media print {
+    #sidebar, .custom-print-button {
+        display: none !important;
+    }
+    .custom-print-area {
+        display: block;
+    }
+}

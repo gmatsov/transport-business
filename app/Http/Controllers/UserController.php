@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PasswordChangeRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -41,5 +42,11 @@ class UserController extends Controller
         auth()->user()->update(['password' => Hash::make($request->get('new_password'))]);
 
         return redirect()->route('user.edit', auth()->id())->with('success', 'Успешно променена парола');
+    }
+
+     /* Api routes !!!*/
+    public function user(Request $request)
+    {
+        return $request->user();
     }
 }

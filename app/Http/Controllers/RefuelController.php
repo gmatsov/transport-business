@@ -20,11 +20,6 @@ class RefuelController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        //
-    }
-
 
     public function showByTruck($truck_id)
     {
@@ -68,11 +63,6 @@ class RefuelController extends Controller
 
         return redirect()->back()->with('success', 'Успесно добавено зареждане');
 
-    }
-
-    public function show($id)
-    {
-        //
     }
 
     public function edit($id)

@@ -32,7 +32,7 @@
             </div>
             <div class="border-bottom">
                 <span><i class="fas fa-bell"></i>&nbsp;&nbsp;&nbsp; Напомни</span>
-                <span class="float-right">{{$reminder->km_before}} км. предварително</span>
+                <span class="float-right">{{$reminder->km_before ? $reminder->km_before : 0}} км. предварително</span>
 
             </div>
         @endif
@@ -55,7 +55,8 @@
                     <i class="fas fa-check"></i> Изпълнено
                 </button>
             </form>
-            <a href="{{route('reminder.edit', $reminder->id)}}" class="btn btn-outline-info d-inline-block">Редактирай</a>
+            <a href="{{route('reminder.edit', $reminder->id)}}"
+               class="btn btn-outline-info d-inline-block">Редактирай</a>
             <form class="d-inline-block" method="post" action="{{route('reminder.destroy', $reminder->id)}}">
                 @csrf
                 @method('delete')
