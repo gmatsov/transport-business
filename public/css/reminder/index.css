@@ -1,0 +1,16 @@
+.complete-form {
+  padding: 3px;
+  float: right;
+}
+
+.complete-form button {
+  border-radius: 15px;
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.reminders {
+  max-width: 500px;
+  margin: 0 auto;
+}
+

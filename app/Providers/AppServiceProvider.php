@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
             \App\Charts\NumberOfTrucksChart::class,
             \App\Charts\AverageFuelConsumptionChart::class,
             \App\Charts\AverageFuelPriceChart::class,
+            \App\Charts\PaidTripsChart::class,
         ]);
     }
 }

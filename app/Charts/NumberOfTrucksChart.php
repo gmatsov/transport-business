@@ -16,10 +16,6 @@ class NumberOfTrucksChart extends BaseChart
     public ?string $routeName = 'number_of_trucks_chart';
     public ?array $middlewares = ['auth'];
 
-    public static function __set_state(array $array)
-    {
-    }
-
     /**
      * Handles the HTTP request for the given chart.
      * It must always return an instance of Chartisan

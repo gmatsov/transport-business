@@ -1,31 +1,26 @@
 #sidebar {
   float: left;
-  background: #e9ebee;
+  background: #ebf4ff;
   min-width: 250px;
   max-width: 250px;
-  min-height: 100vh;
+  min-height: calc(100vh - 20px);
   padding-top: 20px;
 }
 
 #sidebar h3 {
-  background: #95999c;
+  background: #ecf5ff;
 }
 
 #sidebar a {
   font-size: 1.2em;
 }
 
-#sidebar li:hover {
-  background: #e9ebee;
-  background: linear-gradient(90deg, #e9ebee 0%, #3c4858 50%, #e9ebee 100%);
-}
-
 #sidebar li:hover a {
-  color: #fff;
+  color: #247ba0;
 }
 
 #sidebar .dropdown-menu {
-  background: #e9ebee;
+  background: #ebf4ff;
 }
 
 #sidebar .edit-truck-dropdown {

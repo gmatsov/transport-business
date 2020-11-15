@@ -1,0 +1,77 @@
+.truck-data,
+.truck-stats {
+  width: 50%;
+}
+
+.show_truck_header {
+  color: #4aa0d5;
+  background: #ebf4ff;
+  padding: 10px;
+  font-size: 1.1em;
+}
+
+#reminder_count {
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: #a6b6c5;
+  border-radius: 10px;
+}
+
+#show_reminder_tab,
+#show_stats_tab,
+#show_refuels_tab {
+  color: #4aa0d5;
+}
+
+#show_reminder_tab:hover,
+#show_stats_tab:hover,
+#show_refuels_tab:hover {
+  color: #247ba0;
+  cursor: pointer;
+}
+
+.active {
+  border-bottom: 3px solid #4aa0d5;
+}
+
+.active #reminder_count {
+  background-color: #247ba0;
+}
+
+.reminder-header-text {
+  font-size: 1.2em;
+  color: #4aa0d5;
+}
+
+.reminder-header-text:hover {
+  color: #247ba0;
+}
+
+.reminder-body {
+  border-bottom: 1px solid #4aa0d5;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.reminder-complete-button {
+  border: 0;
+  border-radius: 5px;
+  height: 25px;
+  padding: 0 5px;
+}
+
+@media only screen and (max-width: 754px) {
+  .truck-data,
+  .truck-stats {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+

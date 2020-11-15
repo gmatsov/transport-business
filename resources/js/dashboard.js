@@ -71,7 +71,7 @@ const avg_fuel_consumption = new Chartisan({
     hooks: new ChartisanHooks()
         .datasets([{type: 'line'}])
         .legend()
-        .tooltip()
+        .tooltip(true)
 })
 
 const avg_fuel_price = new Chartisan({
@@ -95,5 +95,30 @@ const avg_fuel_price = new Chartisan({
     hooks: new ChartisanHooks()
         .datasets([{type: 'line'}])
         .colors(['#4299E1'])
-        .tooltip()
+        .tooltip(true)
+})
+
+const paid_trips = new Chartisan({
+    el: '#paid_trips_chart',
+    url: "api/chart/paid_trips_chart",
+    loader: {
+        color: '#247ba0',
+        size: [30, 30],
+        type: 'bar',
+        textColor: '#000000',
+        text: 'Зареждам данни...',
+    },
+    error: {
+        color: '#247ba0',
+        size: [30, 30],
+        text: 'Възникна грешка...',
+        textColor: '#247ba0',
+        type: 'general',
+        debug: true,
+    },
+    hooks: new ChartisanHooks()
+        .datasets([{type: 'line'}])
+        .colors(['#32527B', '#6B8EB7', '#BCD3E7'])
+        .tooltip(true)
+        .legend(true)
 })

@@ -1,12 +1,17 @@
 {
-    "/js/add_truck.js": "/js/add_truck.js",
+    "/js/add_reminder.js": "/js/add_reminder.js",
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/css/reminder/index.css": "/css/reminder/index.css",
+    "/css/reminder/show.css": "/css/reminder/show.css",
     "/css/styles.css": "/css/styles.css",
     "/css/sidebar.css": "/css/sidebar.css",
     "/css/home-page-styles.css": "/css/home-page-styles.css",
-    "/css/show-truck.css": "/css/show-truck.css",
+    "/css/truck/show.css": "/css/truck/show.css",
     "/css/create-refuel.css": "/css/create-refuel.css",
-    "/js/edit_truck.js": "/js/edit_truck.js",
-    "/js/remove_truck.js": "/js/remove_truck.js"
+    "/js/dashboard.js": "/js/dashboard.js",
+    "/js/truck/create.js": "/js/truck/create.js",
+    "/js/truck/edit.js": "/js/truck/edit.js",
+    "/js/truck/remove.js": "/js/truck/remove.js",
+    "/js/truck/show.js": "/js/truck/show.js"
 }

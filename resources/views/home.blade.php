@@ -43,5 +43,9 @@
     <div id="avg_fuel_price_chart" style="height: 250px;" class="col-md-5 d-inline-block m-0">
         <h4 class="text-center">Среднa цена на гориво в Евро</h4>
     </div>
+
+    <div id="paid_trips_chart" style="height: 250px;" class="col-md-12 d-inline-block m-0">
+        <h4 class="text-center">Платени километри</h4>
+    </div>
 @endsection
 

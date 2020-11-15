@@ -39,10 +39,6 @@ class KmTraveledChart extends BaseChart
      */
     public ?array $middlewares = ['auth'];
 
-    public static function __set_state(array $array)
-    {
-
-    }
 
     /**
      * Handles the HTTP request for the given chart.
@@ -51,7 +47,6 @@ class KmTraveledChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        dd('here');
         $licence_plates = Truck::all('licence_plate')->pluck('licence_plate')->toArray();
         $trucks_id = Truck::all('id')->toArray();
         $km_traveled_this_reporting_period = [];
