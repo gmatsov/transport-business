@@ -36,7 +36,10 @@
                 <div class="col-md-3 font-weight-bold">Среден разход</div>
                 <div class="col-md-1">{{$report->fuel_consumption}}</div>
             @endif
-
+                @if(isset( $report->parking ))
+                    <div class="col-md-3 font-weight-bold">Разходи за паркинг</div>
+                    <div class="col-md-1">{{$report->parking}}</div>
+                @endif
         </div>
 
     </div>

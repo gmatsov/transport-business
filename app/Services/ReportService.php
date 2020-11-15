@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\PaidTrip;
+use App\Models\Parking;
 use App\Models\Refuel;
 use App\Models\ReportingPeriod;
 use App\Models\Truck;
@@ -17,6 +18,7 @@ class ReportService
     private $paid_km_traveled;
     private $km_difference;
     private $fuel_consumption;
+    private $parking;
     private int $reporting_period_id;
 
     public function __construct($data)
@@ -29,6 +31,7 @@ class ReportService
         $this->km_difference = $data['km_difference'];
         $this->fuel_consumption = $data['fuel_consumption'];
         $this->reporting_period_id = $this->getReportingPeriodId();
+        $this->parking = $data['parking'];
     }
 
     public function create(): object
@@ -53,10 +56,22 @@ class ReportService
         if ($this->fuel_consumption) {
             $result->fuel_consumption = $this->getFuelConsumption();
         }
+
+        if ($this->parking) {
+            $result->parking = $this->getParkingData();
+        }
         $result->month = $this->month;
         $result->year = $this->year;
         return $result;
 
+    }
+
+    private function getParkingData()
+    {
+        return Parking::where('truck_id', $this->truck_id)
+            ->where('reporting_period_id', $this->reporting_period_id)
+            ->pluck('price')
+            ->sum();
     }
 
     private function getPaidKm()
