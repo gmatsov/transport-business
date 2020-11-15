@@ -27,7 +27,7 @@ class UpdateUserRequest extends FormRequest
             'first_name' => 'nullable|string|min:2',
             'last_name' => 'nullable|string|min:2',
             'username' => 'string|min:3|unique:users,username,' . auth()->id(),
-            'email' => 'unique:users,email,' . auth()->id(),
+            'email' => 'required|unique:users,email,' . auth()->id(),
             'password' => 'required|password',
         ];
     }
@@ -40,6 +40,7 @@ class UpdateUserRequest extends FormRequest
             'username.string' => 'Потребителското име трябва да е поне 3 символа',
             'username.min' => 'Потребителското име трябва да е поне 3 символа',
             'email.unique' => 'Въведеният имейл адрес е зает',
+            'email.required' => 'Задължително поле',
             'password.required' => 'Паролата е задължителна',
             'password.password' => 'Грешна парола',
         ];

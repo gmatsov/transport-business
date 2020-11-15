@@ -49,50 +49,80 @@
         <div class="alert alert-info">
             Добави нужните опции за репорта
         </div>
-        <div class="form-group">
-            <input type="hidden" name="km_traveled" id="km_traveled_hidden" value="0">
-            <label>
-                <input
-                    type="checkbox"
-                    id="km_traveled"
-                    name="km_traveled"
-                    value="1"
-                    aria-invalid="false">
-                Изминати километри</label>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <input type="hidden" name="km_traveled" id="km_traveled_hidden" value="0">
+                <label>
+                    <input
+                        type="checkbox"
+                        id="km_traveled"
+                        name="km_traveled"
+                        value="1"
+                        aria-invalid="false">
+                    Изминати километри</label>
+            </div>
+            <div class="form-group col-md-6">
+                <input type="hidden" name="paid_km_traveled" id="paid_km_traveled_hidden" value="0">
+                <label>
+                    <input
+                        type="checkbox"
+                        id="paid_km_traveled"
+                        name="paid_km_traveled"
+                        value="1"
+                        aria-invalid="false">
+                    Изминати платени километри</label>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="hidden" name="paid_km_traveled" id="paid_km_traveled_hidden" value="0">
-            <label>
-                <input
-                    type="checkbox"
-                    id="paid_km_traveled"
-                    name="paid_km_traveled"
-                    value="1"
-                    aria-invalid="false">
-                Изминати платени километри</label>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <input type="hidden" name="km_difference" id="km_difference_hidden" value="0">
+                <label>
+                    <input
+                        type="checkbox"
+                        id="km_difference"
+                        name="km_difference"
+                        value="1"
+                        aria-invalid="false">
+                    Разлика между платени и изминати км.</label>
+            </div>
+            <div class="form-group col-md-6">
+                <input type="hidden" name="fuel_consumption" id="fuel_consumption_hidden" value="0">
+                <label>
+                    <input
+                        type="checkbox"
+                        id="fuel_consumption"
+                        name="fuel_consumption"
+                        value="1"
+                        aria-invalid="false">
+                    Среден разход</label>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="hidden" name="km_difference" id="km_difference_hidden" value="0">
-            <label>
-                <input
-                    type="checkbox"
-                    id="km_difference"
-                    name="km_difference"
-                    value="1"
-                    aria-invalid="false">
-                Разлика между платени и изминати км.</label>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <input type="hidden" name="parking" id="parking" value="0">
+                <label>
+                    <input
+                        type="checkbox"
+                        id="parking"
+                        name="parking"
+                        value="1"
+                        aria-invalid="false">
+                    Паркинги</label>
+            </div>
+            <div class="form-group col-md-6">
+                <input type="hidden" name="costs" id="costs" value="0">
+                <label>
+                    <input
+                        type="checkbox"
+                        id="costs"
+                        name="costs"
+                        value="1"
+                        aria-invalid="false">
+                    Разходи</label>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="hidden" name="fuel_consumption" id="fuel_consumption_hidden" value="0">
-            <label>
-                <input
-                    type="checkbox"
-                    id="fuel_consumption"
-                    name="fuel_consumption"
-                    value="1"
-                    aria-invalid="false">
-                Среден разход</label>
-        </div>
+
         <div class="form-group text-center">
             <button type="submit" class="btn btn-success">Генерирай</button>
         </div>

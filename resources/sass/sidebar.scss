@@ -5,52 +5,55 @@ $headers-color: #4aa0d5;
 
 
 #sidebar {
-  float: left;
-  background: $base-background;
-  min-width: $sidebar-width;
-  max-width: $sidebar-width;
-  min-height: calc(100vh - 20px) ;
-  padding-top: 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: $base-background;
+    min-width: $sidebar-width;
+    max-width: $sidebar-width;
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-left: 20px;
 
-  h3 {
-    background: $headers-background;
-  }
-
-  a {
-    font-size: 1.2em;
-  }
-
-  li:hover {
-    a {
-      color: #247ba0;
+    h3 {
+        background: $headers-background;
     }
 
-  }
+    a {
+        font-size: 1.2em;
+    }
 
-  .dropdown-menu {
-    background: $base-background;
-  }
+    li:hover {
+        a {
+            color: #247ba0;
+        }
 
-  .edit-truck-dropdown {
-    display: block;
-    width: $sidebar-width;
-    transform: translate3d(0px, 231px, 0px) !important;
+    }
 
-  }
+    .dropdown-menu {
+        background: $base-background;
+    }
+
+    .edit-truck-dropdown {
+        display: block;
+        width: $sidebar-width;
+        transform: translate3d(0px, 231px, 0px) !important;
+
+    }
 }
 
 @media only screen and (max-width: 754px) {
 
-  #sidebar {
-    float: none;
-    max-width: 100vw;
-    min-height: 0;
+    #sidebar {
+        float: none;
+        max-width: 100vw;
+        min-height: 0;
 
-    .edit-truck-dropdown {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      transform: translate3d(0px, 231px, 0px) !important;
+        .edit-truck-dropdown {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            transform: translate3d(0px, 231px, 0px) !important;
+        }
     }
-  }
 }

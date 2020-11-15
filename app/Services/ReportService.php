@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Models\PaidTrip;
+use App\Models\Refuel;
 use App\Models\ReportingPeriod;
 use App\Models\Truck;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +17,7 @@ class ReportService
     private $paid_km_traveled;
     private $km_difference;
     private $fuel_consumption;
-    private $reporting_period_id;
+    private int $reporting_period_id;
 
     public function __construct($data)
     {
@@ -31,97 +33,82 @@ class ReportService
 
     public function create(): object
     {
-        $query = $this->getSelects();
-        $query = $this->getJoins($query);
-        $query = $this->getWheres($query);
-        $query = $this->getGroups($query);
+        $result = new \stdClass();
+        $result->licence_plate = Truck::where('id', $this->truck_id)->pluck('licence_plate')->first();
 
-        $result = DB::select($query);
-
-        if (empty($result)) {
-            $result = new \stdClass();
-            $result->licence_plate = Truck::where('id', $this->truck_id)->pluck('licence_plate')->first();
-        } else {
-            $result = $result[0];
-
+        if ($this->km_traveled) {
+            $result->km_traveled = $this->getTraveledKm();
         }
+
+        if ($this->paid_km_traveled) {
+            $result->paid_trip_km_traveled = $this->getPaidKm();
+            $result->paid_trip_details = $this->detailedPaidKm();
+            $result->paid_amount = $this->paidAmount();
+        }
+
         if ($this->km_difference) {
-            $result->km_difference = $result->km_traveled - $result->paid_trip_km_traveled;
+            $result->km_difference = $this->getTraveledKm() - $this->getPaidKm();
         }
 
+        if ($this->fuel_consumption) {
+            $result->fuel_consumption = $this->getFuelConsumption();
+        }
         $result->month = $this->month;
         $result->year = $this->year;
         return $result;
+
+    }
+
+    private function getPaidKm()
+    {
+        return PaidTrip::where('truck_id', $this->truck_id)
+            ->where('reporting_period_id', $this->reporting_period_id)
+            ->pluck('distance')
+            ->sum();
+    }
+
+    private function paidAmount()
+    {
+        $paid_mount = DB::select(
+            'SELECT sum(distance*price_per_km) as paid_amount FROM paid_trips
+                    WHERE truck_id = 1 AND reporting_period_id = 11'
+        );
+
+        return $paid_mount[0]->paid_amount;
+    }
+
+    private function detailedPaidKm()
+    {
+        return DB::select(
+            'SELECT price_per_km, SUM(distance) AS total_distance FROM paid_trips
+                    WHERE truck_id = 1 AND reporting_period_id = 11
+                    GROUP BY price_per_km'
+        );
+    }
+
+    private function getTraveledKm()
+    {
+        return Refuel::where('truck_id', $this->truck_id)
+            ->where('reporting_period_id', $this->reporting_period_id)
+            ->pluck('trip_odometer')
+            ->sum();
+    }
+
+    private function getUsedQuantity()
+    {
+        return Refuel::where('truck_id', $this->truck_id)
+            ->where('reporting_period_id', $this->reporting_period_id)
+            ->pluck('quantity')
+            ->sum();
+    }
+
+    private function getFuelConsumption()
+    {
+        return number_format(((float)$this->getUsedQuantity() * 100) / $this->getTraveledKm(), 2, '.', ' ');
     }
 
     private function getReportingPeriodId(): int
     {
         return ReportingPeriod::where('month', $this->month)->where('year', $this->year)->first()->id;
-    }
-
-    private function getSelects(): string
-    {
-
-        $select = 'SELECT trucks.licence_plate';
-
-        if ($this->km_traveled) {
-            $select .= ', SUM(refuels.trip_odometer) AS km_traveled ';
-        }
-
-        if ($this->paid_km_traveled) {
-            $select .= ', SUM(paid_trips.distance) AS paid_trip_km_traveled ';
-        }
-
-
-
-        if ($this->fuel_consumption) {
-            $select .= ', ';
-        }
-
-
-        $select .= ' FROM trucks';
-
-        return $select;
-    }
-
-    private function getJoins(string $query): string
-    {
-        if ($this->km_traveled) {
-            $query .= ' JOIN refuels ON trucks.id = refuels.truck_id';
-        }
-
-        if ($this->paid_km_traveled) {
-            $query .= ' JOIN paid_trips ON trucks.id = paid_trips.truck_id ';
-        }
-
-
-
-        if ($this->fuel_consumption) {
-            $query .= ', ';
-        }
-
-
-        return $query;
-    }
-
-    private function getWheres(string $query): string
-    {
-        $query .= ' WHERE trucks.id = ' . $this->truck_id;
-
-        if ($this->km_traveled) {
-            $query .= ' AND refuels.reporting_period_id =  ' . $this->reporting_period_id;
-        }
-        if ($this->paid_km_traveled) {
-            $query .= ' AND paid_trips.reporting_period_id =  ' . $this->reporting_period_id;
-        }
-
-        return $query;
-    }
-
-    private function getGroups(string $query)
-    {
-        $query .= ' GROUP BY ' . $this->truck_id;
-
-        return $query;
     }
 }

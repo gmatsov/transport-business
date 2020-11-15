@@ -26,7 +26,7 @@
     @yield('styles')
 </head>
 <body>
-<div id="app" class="">
+<div id="app" class="p-4">
     @include('layouts.nav')
     @guest
     @else

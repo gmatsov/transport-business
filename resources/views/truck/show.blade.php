@@ -43,7 +43,7 @@
 
     </div>
 
-    <div class="row p-4">
+    <div>
         <div class=" float-left truck-data pr-2">
             <div class="show_truck_header">Данни за МПС</div>
             @if(isset($truck->brand))

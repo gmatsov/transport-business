@@ -1,10 +1,13 @@
 #sidebar {
-  float: left;
+  position: absolute;
+  left: 0;
+  top: 0;
   background: #ebf4ff;
   min-width: 250px;
   max-width: 250px;
-  min-height: calc(100vh - 20px);
-  padding-top: 20px;
+  min-height: 100vh;
+  padding-top: 100px;
+  padding-left: 20px;
 }
 
 #sidebar h3 {
