@@ -68,4 +68,8 @@ Route::get('report', 'ReportController@index')->name('report.index');
 Route::get('report/show', 'ReportController@show')->name('report.show');
 
 /* Charts Routes*/
-
+Route::get('/avg-fuel-consumption-chart', 'ChartController@AvgFuelConsumptionChart');
+Route::get('/avg-fuel-price-chart', 'ChartController@AvgFuelPriceChart');
+Route::get('/km-traveled-chart', 'ChartController@KmTraveledChart');
+Route::get('/number-of-trucks-chart', 'ChartController@NumberOfTrucksChart');
+Route::get('/paid-trips-chart', 'ChartController@PaidTripsChart');

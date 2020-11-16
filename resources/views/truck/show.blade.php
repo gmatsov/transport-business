@@ -43,8 +43,8 @@
 
     </div>
 
-    <div>
-        <div class=" float-left truck-data pr-2">
+    <div class="row">
+        <div class="truck-data col-md-6">
             <div class="show_truck_header">Данни за МПС</div>
             @if(isset($truck->brand))
                 <div class="border-bottom"><span><i class="fas fa-truck-moving mr-2"></i>Марка</span> <span
@@ -81,7 +81,7 @@
                         class="float-right">{{$truck->horse_power}}</span></div>
             @endif
         </div>
-        <div class=" float-right truck-stats">
+        <div class="truck-stats col-md-6">
             <ul class="nav nav-tabs show_truck_header">
                 <li class="active" id="show_stats_tab">
                     <i class="fa fa-bar-chart"> </i>&nbsp;Статистики &nbsp;&nbsp;
@@ -181,16 +181,16 @@
                 @endforeach
             </div>
             <div id="refuels_tab" style="display: none">
-                <div class="refuels">
-                    <div>
+                <div class="refuels text-center">
+                    <div class="row">
                         <p class="col-md-3 col-sm-3 col-3">Дата</p>
                         <p class="col-md-3 col-sm-3 col-3">Километраж</p>
                         <p class="col-md-2 col-sm-2 col-2">Дистанция</p>
                         <p class="col-md-2 col-sm-2 col-2">Количество</p>
-                        <p class="col-md-1 col-sm-1 col-1">Ø</p>
+                        <p class="col-md-2 col-sm-2 col-2">Ø</p>
                     </div>
                     @foreach($refuels as $refuel)
-                        <div class="border-bottom">
+                        <div class="border-bottom row">
                             <span
                                 class="col-md-3 col-sm-3 p-0 col-3">
                                 <a href="{{route('refuel.edit', $refuel->id)}}"
@@ -202,7 +202,7 @@
                             <span
                                 class="col-md-2 col-sm-2 p-0 col-2">{{number_format((float)$refuel->quantity, 2, '.', ' ')}}</span>
                             <span
-                                class="col-md-1 col-sm-1 p-0 col-1">{{number_format(((float)$refuel->quantity*100)/$refuel->trip_odometer, 2, '.', ' ')}}</span>
+                                class="col-md-2 col-sm-2 p-0 col-2">{{number_format(((float)$refuel->quantity*100)/$refuel->trip_odometer, 2, '.', ' ')}}</span>
                         </div>
                     @endforeach
                 </div>

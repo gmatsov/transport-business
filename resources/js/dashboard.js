@@ -1,6 +1,6 @@
 const traveled_km_chart = new Chartisan({
     el: '#traveled_km_chart',
-    url: "api/chart/km_traveled_chart",
+    url: "km-traveled-chart",
     loader: {
         color: '#247ba0',
         size: [30, 30],
@@ -28,7 +28,7 @@ const traveled_km_chart = new Chartisan({
 
 const number_of_trucks = new Chartisan({
     el: '#number_of_trucks',
-    url: "api/chart/number_of_trucks_chart",
+    url: "number-of-trucks-chart",
     loader: {
         color: '#247ba0',
         size: [30, 30],
@@ -52,7 +52,7 @@ const number_of_trucks = new Chartisan({
 
 const avg_fuel_consumption = new Chartisan({
     el: '#avg_fuel_consumption_chart',
-    url: "api/chart/avg_fuel_consumption_chart",
+    url: "avg-fuel-consumption-chart",
     loader: {
         color: '#247ba0',
         size: [30, 30],
@@ -76,7 +76,7 @@ const avg_fuel_consumption = new Chartisan({
 
 const avg_fuel_price = new Chartisan({
     el: '#avg_fuel_price_chart',
-    url: "api/chart/avg_fuel_price_chart",
+    url: "avg-fuel-price-chart",
     loader: {
         color: '#247ba0',
         size: [30, 30],
@@ -100,7 +100,7 @@ const avg_fuel_price = new Chartisan({
 
 const paid_trips = new Chartisan({
     el: '#paid_trips_chart',
-    url: "api/chart/paid_trips_chart",
+    url: "paid-trips-chart",
     loader: {
         color: '#247ba0',
         size: [30, 30],

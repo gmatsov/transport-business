@@ -135,7 +135,7 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\tb\transport-business\resources\js\add_reminder.js */"./resources/js/add_reminder.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\js\add_reminder.js */"./resources/js/add_reminder.js");
 
 
 /***/ })

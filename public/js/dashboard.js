@@ -95,7 +95,7 @@
 
 var traveled_km_chart = new Chartisan({
   el: '#traveled_km_chart',
-  url: "api/chart/km_traveled_chart",
+  url: "km-traveled-chart",
   loader: {
     color: '#247ba0',
     size: [30, 30],
@@ -117,7 +117,7 @@ var traveled_km_chart = new Chartisan({
 });
 var number_of_trucks = new Chartisan({
   el: '#number_of_trucks',
-  url: "api/chart/number_of_trucks_chart",
+  url: "number-of-trucks-chart",
   loader: {
     color: '#247ba0',
     size: [30, 30],
@@ -141,7 +141,7 @@ var number_of_trucks = new Chartisan({
 });
 var avg_fuel_consumption = new Chartisan({
   el: '#avg_fuel_consumption_chart',
-  url: "api/chart/avg_fuel_consumption_chart",
+  url: "avg-fuel-consumption-chart",
   loader: {
     color: '#247ba0',
     size: [30, 30],
@@ -163,7 +163,7 @@ var avg_fuel_consumption = new Chartisan({
 });
 var avg_fuel_price = new Chartisan({
   el: '#avg_fuel_price_chart',
-  url: "api/chart/avg_fuel_price_chart",
+  url: "avg-fuel-price-chart",
   loader: {
     color: '#247ba0',
     size: [30, 30],
@@ -185,7 +185,7 @@ var avg_fuel_price = new Chartisan({
 });
 var paid_trips = new Chartisan({
   el: '#paid_trips_chart',
-  url: "api/chart/paid_trips_chart",
+  url: "paid-trips-chart",
   loader: {
     color: '#247ba0',
     size: [30, 30],
@@ -215,7 +215,7 @@ var paid_trips = new Chartisan({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\tb\transport-business\resources\js\dashboard.js */"./resources/js/dashboard.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\js\dashboard.js */"./resources/js/dashboard.js");
 
 
 /***/ })

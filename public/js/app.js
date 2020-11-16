@@ -50061,15 +50061,15 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\tb\transport-business\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\xampp\htdocs\tb\transport-business\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! C:\xampp\htdocs\tb\transport-business\resources\sass\reminder\index.scss */"./resources/sass/reminder/index.scss");
-__webpack_require__(/*! C:\xampp\htdocs\tb\transport-business\resources\sass\reminder\show.scss */"./resources/sass/reminder/show.scss");
-__webpack_require__(/*! C:\xampp\htdocs\tb\transport-business\resources\sass\styles.scss */"./resources/sass/styles.scss");
-__webpack_require__(/*! C:\xampp\htdocs\tb\transport-business\resources\sass\sidebar.scss */"./resources/sass/sidebar.scss");
-__webpack_require__(/*! C:\xampp\htdocs\tb\transport-business\resources\sass\home-page-styles.scss */"./resources/sass/home-page-styles.scss");
-__webpack_require__(/*! C:\xampp\htdocs\tb\transport-business\resources\sass\truck\show.scss */"./resources/sass/truck/show.scss");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\tb\transport-business\resources\sass\create-refuel.scss */"./resources/sass/create-refuel.scss");
+__webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\sass\reminder\index.scss */"./resources/sass/reminder/index.scss");
+__webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\sass\reminder\show.scss */"./resources/sass/reminder/show.scss");
+__webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\sass\styles.scss */"./resources/sass/styles.scss");
+__webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\sass\sidebar.scss */"./resources/sass/sidebar.scss");
+__webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\sass\home-page-styles.scss */"./resources/sass/home-page-styles.scss");
+__webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\sass\truck\show.scss */"./resources/sass/truck/show.scss");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\sass\create-refuel.scss */"./resources/sass/create-refuel.scss");
 
 
 /***/ })

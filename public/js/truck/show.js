@@ -130,7 +130,7 @@ $('#test').click(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\tb\transport-business\resources\js\truck\show.js */"./resources/js/truck/show.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\js\truck\show.js */"./resources/js/truck/show.js");
 
 
 /***/ })
