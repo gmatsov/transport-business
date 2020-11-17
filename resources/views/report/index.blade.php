@@ -124,7 +124,7 @@
         </div>
 
         <div class="form-group text-center">
-            <button type="submit" class="btn btn-success">Генерирай</button>
+            <button type="submit" class="btn btn-sm blue-btn">Генерирай</button>
         </div>
     </form>
 @endsection

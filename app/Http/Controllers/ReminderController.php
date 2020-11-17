@@ -15,7 +15,7 @@ class ReminderController extends Controller
 
     public function index()
     {
-        $reminders = Reminder::all();
+        $reminders = Reminder::paginate(10);
 
         return view('reminder.index', compact('reminders'));
     }
@@ -45,9 +45,7 @@ class ReminderController extends Controller
 
     public function show($id)
     {
-        $reminder = Reminder::where('id', $id)->first();
 
-        return view('reminder.show', compact('reminder'));
     }
 
     public function destroy($id)
@@ -99,7 +97,6 @@ class ReminderController extends Controller
         } else {
             $request->request->add(['by_odometer' => NULL]);
             $request->request->add(['km_before' => NULL]);
-
         }
 
         if ($request->remind_by_date == 0) {

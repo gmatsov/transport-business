@@ -160,7 +160,7 @@
                 <div class="help-block"></div>
             </div>
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-success">Добави напомняне</button>
+                <button type="submit" class="btn btn-sm blue-btn">Добави напомняне</button>
             </div>
         </form>
     </div>
