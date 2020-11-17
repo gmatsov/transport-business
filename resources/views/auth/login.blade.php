@@ -13,7 +13,7 @@
                    autocomplete="username"
                    required>
 
-            @error('email')
+            @error('username')
             <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

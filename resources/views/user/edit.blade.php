@@ -8,7 +8,7 @@
 @section('content')
     <h1 class="text-center mb-4">Потребителски панел</h1>
     <div class="row">
-        <div class="col-md-6 float-left">
+        <div class="col-md-6">
             <div class="text-center">
                 <h4>Промени потребителски данни</h4>
             </div>
@@ -61,12 +61,12 @@
                     @enderror
                 </div>
                 <div class="form-group text-center">
-                    <input type="submit" class="btn btn-outline-success" value="Промени">
+                    <input type="submit" class="btn btn-sm blue-btn" value="Промени">
                 </div>
             </form>
         </div>
-        <div class="col-md-6 float-right">
-            <div class="text-center m-2">
+        <div class="col-md-6">
+            <div class="text-center">
                 <h4>Промени парола</h4>
             </div>
             <form action="{{route('password-change')}}" method="post">
@@ -98,7 +98,7 @@
                     @enderror
                 </div>
                 <div class="form-group text-center">
-                    <input type="submit" class="btn btn-outline-success " value="Промени парола">
+                    <input type="submit" class="btn blue-btn btn-sm" value="Промени парола">
                 </div>
             </form>
         </div>

@@ -28,22 +28,23 @@
         </div>
     @endif
     <div class="row">
-        <div id="traveled_km_chart" style="height: 250px ;" class="col-md-12 d-inline-block p-0">
+        <div id="traveled_km_chart" style="height: 250px ;" class="col-md-6">
             <h4 class="text-center">Изминати километри</h4>
         </div>
 
-        <div id="avg_fuel_consumption_chart" style="height: 250px;" class="col-md-12 d-inline-block m-0">
+        <div id="avg_fuel_consumption_chart" style="height: 250px;" class="col-md-6">
             <h4 class="text-center">Среден разход в литри</h4>
         </div>
-        <div id="paid_trips_chart" style="height: 250px;" class="col-md-12 d-inline-block m-0">
+        <div id="paid_trips_chart" style="height: 250px;" class="col-md-6">
             <h4 class="text-center">Платени километри</h4>
         </div>
-        <div id="number_of_trucks" style="height: 250px;" class="col-md-3 mb-3 d-inline-block">
+        <div id="avg_fuel_price_chart" style="height: 250px;" class="col-md-6">
+            <h4 class="text-center">Средна цена на гориво в Евро</h4>
+        </div>
+        <div id="number_of_trucks" style="height: 250px;" class="col-md-3">
             <h4 class="text-center">Брой камиони</h4>
         </div>
-        <div id="avg_fuel_price_chart" style="height: 250px;" class="col-md-9 d-inline-block m-0">
-            <h4 class="text-center">Среднa цена на гориво в Евро</h4>
-        </div>
+
     </div>
 
 @endsection

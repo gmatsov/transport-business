@@ -13,35 +13,51 @@
 
     <h1 class="text-center">{{ $truck->licence_plate}}</h1>
     <div class="row mb-4 truck-menu">
-        <div><a href="{{route('refuel.create', $truck->id)}}" id="add_fuel"
-                class="btn btn-outline-info">
-                <i class="fas fa-plus"></i> Гориво </a>
+        <div>
+            <a href="{{route('refuel.create', $truck->id)}}" id="add_fuel"
+               class="btn btn-outline-info">
+                <i class="fas fa-plus"></i> Гориво
+            </a>
         </div>
-        <div><a href="{{route('parking.create', $truck->id)}}" id="add_parking_tax"
-                class="btn btn-outline-info">
-                <i class="fas fa-plus"></i> Паркинги</a>
+        <div>
+            <a href="{{route('paid-trip.create', $truck->id)}}" id="show_refuels" class="btn btn-outline-info">
+                <i class="fas fa-plus"></i> Платени км
+            </a>
         </div>
-        <div><a href="{{route('cost.create', $truck->id)}}" id="add_costs"
-                class="btn btn-outline-info">
-                <i class="fas fa-plus"></i> Разходи</a>
+        <div>
+            <a href="{{route('parking.create', $truck->id)}}" id="add_parking_tax"
+               class="btn btn-outline-info">
+                <i class="fas fa-plus"></i> Паркинги
+            </a>
         </div>
-        <div><a href="{{route('paid-trip.create', $truck->id)}}" id="show_refuels" class="btn btn-outline-info">
-                <i class="fas fa-plus"></i> Платени км</a>
+        <div>
+            <a href="{{route('cost.create', $truck->id)}}" id="add_costs"
+               class="btn btn-outline-info">
+                <i class="fas fa-plus"></i> Разходи
+            </a>
         </div>
 
-        <div><a href="{{route('refuel.truck', $truck->id)}}" id="show_refuels"
-                class="btn btn-outline-info"><i class="fas fa-eye"></i>
-                Зареждания</a>
+
+        <div>
+            <a href="{{route('refuel.truck', $truck->id)}}" id="show_refuels"
+               class="btn btn-outline-info"><i class="fas fa-eye"></i>
+                Зареждания
+            </a>
         </div>
-        <div><a href="#" id="show_refuels"
-                class="btn btn-outline-info"><i class="fas fa-eye"></i>
-                Разходи</a>
-        </div>
-        <div><a href="{{route('paid-trip.truck', $truck->id)}}"
-                class="btn btn-outline-info"><i
+        <div>
+            <a href="{{route('paid-trip.truck', $truck->id)}}"
+               class="btn btn-outline-info"><i
                     class="fas fa-eye"></i>
-                Платени км</a>
+                Платени км
+            </a>
         </div>
+        <div>
+            <a href="#" id="show_refuels"
+               class="btn btn-outline-info"><i class="fas fa-eye"></i>
+                Разходи
+            </a>
+        </div>
+
         <div class="d-inline-block">
             <button type="button" class="btn btn-outline-danger small-button font-weight-bold"
                     data-toggle="modal"
