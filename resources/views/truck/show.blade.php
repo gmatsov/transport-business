@@ -52,13 +52,13 @@
             </a>
         </div>
         <div>
-            <a href="#" id="show_refuels"
+            <a href="{{route('cost.truck', $truck->id)}}" id="show_refuels"
                class="btn btn-outline-info"><i class="fas fa-eye"></i>
                 Разходи
             </a>
         </div>
 
-        <div class="d-inline-block">
+        <div>
             <button type="button" class="btn btn-outline-danger small-button font-weight-bold"
                     data-toggle="modal"
                     data-target="#removeTruckModal">
@@ -80,7 +80,7 @@
                             {{__(' Със заличаването на камиона ще загубите всички данни за него.')}}
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success cool-green-background"
+                            <button type="button" class="btn btn-success"
                                     data-dismiss="modal">{{__('Изход')}}</button>
                             <form method="post" action="{{route('truck.destroy', $truck->id)}}">
                                 @csrf
@@ -260,9 +260,5 @@
             </div>
 
         </div>
-    </div>
-
-
-    <div class="col-md-12 text-center"><a href="{{route('truck.index')}}" class="btn btn-success m-4">Назад</a>
     </div>
 @endsection

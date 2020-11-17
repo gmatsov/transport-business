@@ -5,7 +5,7 @@
 @endsection
 @section('content')
     <h1 class="text-center">
-        Платени километри {{count($parking_lots) != NULL ? 'за '. $parking_lots[0]->truckData->licence_plate : ''}}
+        Разходи {{count($costs) != NULL ? 'за '. $costs[0]->truckData->licence_plate : ''}}
     </h1>
     <div>
         <table class="table text-center table-striped row-sm">
@@ -18,16 +18,16 @@
             </tr>
             </thead>
             <tbody>
-            @foreach ($parking_lots as $parking)
+            @foreach ($costs as $cost)
                 <tr>
-                    <td><a href="{{route('paid-trip.edit', $parking->id)}}">
-                            {{date("F", mktime(0, 0, 0, $parking->reportingPeriod->month, 10))}} {{$parking->reportingPeriod->year}}
+                    <td><a href="{{route('paid-trip.edit', $cost->id)}}">
+                            {{date("F", mktime(0, 0, 0, $cost->reportingPeriod->month, 10))}} {{$cost->reportingPeriod->year}}
                         </a>
                     </td>
-                    <td>{{$parking->price}}</td>
-                    <td>{{$parking->note}}</td>
+                    <td>{{$cost->price}}</td>
+                    <td>{{$cost->note}}</td>
                     <td>
-                        <form action="{{ route('parking.destroy', ['parking_id'=> $parking->id]) }}"
+                        <form action="{{ route('cost.destroy', ['cost_id'=> $cost->id]) }}"
                               method="POST">
                             @method('delete')
                             @csrf
@@ -37,11 +37,11 @@
                     </td>
                 </tr>
             @endforeach
-            {{ $parking_lots->links() }}
+            {{ $costs->links() }}
             </tbody>
         </table>
     </div>
     <div class="col-md-12 text-center"><a href="{{route('truck.show', $truck_id)}}"
-                                          class="btn btn-success m-4">Назад към камиона</a>
+                                          class="btn btn-sm blue-btn m-4">Назад към камиона</a>
     </div>
 @endsection

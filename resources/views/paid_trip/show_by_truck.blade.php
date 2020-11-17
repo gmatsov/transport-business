@@ -41,6 +41,6 @@
         </table>
     </div>
     <div class="col-md-12 text-center"><a href="{{route('truck.show', $truck_id)}}"
-                                          class="btn btn-success m-4">Назад към камиона</a>
+                                          class="btn btn-sm blue-btn m-4">Назад към камиона</a>
     </div>
 @endsection

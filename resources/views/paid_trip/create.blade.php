@@ -9,7 +9,7 @@
     <div class="container">
         <h1 class="text-center mb-4">Добавяне на платени километри за камион {{$truck->licence_plate}}</h1>
         <div class="row p-2">
-            <div class="float-left col-md-6 m-0 p-0">
+            <div class="col-md-6">
                 <form method="post" action="{{route('paid-trip.store')}}" class="">
                     @csrf
                     <input type="number" name="truck_id" value="{{$truck->id}}" hidden>
@@ -49,12 +49,12 @@
                         @enderror
                     </div>
                     <div class="form-group text-center">
-                        <input type="submit" value="Добави" class="btn btn-success submit mt-4" id="submit">
+                        <input type="submit" value="Добави" class="btn  btn-sm blue-btn mt-4" id="submit">
                     </div>
                 </form>
 
             </div>
-            <div class="col-md-6 float-right p-0">
+            <div class="col-md-6">
                 <h4 class="text-center">Последни добавени платени км.</h4>
                 <div class="refuels ">
                     <div>
@@ -77,8 +77,9 @@
                     @endforeach
                 </div>
                 <div class="col-md-12 text-center"><a href="{{route('truck.show', $truck->id)}}"
-                                                      class="btn btn-success m-4">Назад към камиона</a>
+                                                      class="btn btn-sm blue-btn m-4">Назад към камиона</a>
                 </div>
             </div>
         </div>
+    </div>
 @endsection

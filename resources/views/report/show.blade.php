@@ -8,7 +8,7 @@
 @section('content')
     <div class="custom-print-area">
         <h1 class="text-center">Репорт за {{ $report->licence_plate }}</h1>
-        <h5 class="row">
+        <h5>
             Отчетен период: {{date("F", mktime(0, 0, 0, $report->month, 10))}} {{ $report->year }}
         </h5>
         <div class="row mt-3">
@@ -93,6 +93,6 @@
 
 
     <div class="d-flex justify-content-center">
-        <button onclick="window.print()" class="custom-print-button btn btn-info">Принтирай</button>
+        <button onclick="window.print()" class="custom-print-button btn btn-sm blue-btn">Принтирай</button>
     </div>
 @endsection

@@ -86,13 +86,9 @@ main {
 }
 
 @media print {
-  #sidebar,
+  #sidebar-wrapper,
   .custom-print-button {
     display: none !important;
-  }
-
-  .custom-print-area {
-    display: block;
   }
 }
 

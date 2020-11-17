@@ -57,7 +57,7 @@
                 </select>
             </div>
             <div class="form-group text-center">
-                <input type="button" value="Промени" class="btn btn-success submit mt-4" id="submit">
+                <input type="button" value="Промени" class="btn btn-sm blue-btn submit mt-4" id="submit">
             </div>
         </form>
     </div>

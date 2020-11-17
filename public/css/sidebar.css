@@ -18,7 +18,7 @@
   min-width: 100vw;
 }
 
-#wrapper.toggled #sidebar-wrapper {
+e #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
 }
 

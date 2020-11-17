@@ -72,12 +72,14 @@ main {
 .reminder-complete-form {
 
     padding: 3px;
+
     button {
         border-radius: 15px;
         min-width: 30px;
         min-height: 30px;
     }
 }
+
 /* End of Remindex Index page*/
 @media only screen and (max-width: 768px) {
     main {
@@ -87,10 +89,10 @@ main {
 }
 
 @media print {
-    #sidebar, .custom-print-button {
+    #sidebar-wrapper, .custom-print-button {
         display: none !important;
     }
     .custom-print-area {
-        display: block;
+
     }
 }
