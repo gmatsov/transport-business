@@ -49966,6 +49966,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/less/guest.less":
+/*!***********************************!*\
+  !*** ./resources/less/guest.less ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -50055,13 +50066,14 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/reminder/index.scss ./resources/sass/reminder/show.scss ./resources/sass/styles.scss ./resources/sass/sidebar.scss ./resources/sass/home-page-styles.scss ./resources/sass/truck/show.scss ./resources/sass/create-refuel.scss ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/less/guest.less ./resources/sass/app.scss ./resources/sass/reminder/index.scss ./resources/sass/reminder/show.scss ./resources/sass/styles.scss ./resources/sass/sidebar.scss ./resources/sass/home-page-styles.scss ./resources/sass/truck/show.scss ./resources/sass/create-refuel.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\less\guest.less */"./resources/less/guest.less");
 __webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\sass\app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\sass\reminder\index.scss */"./resources/sass/reminder/index.scss");
 __webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\sass\reminder\show.scss */"./resources/sass/reminder/show.scss");

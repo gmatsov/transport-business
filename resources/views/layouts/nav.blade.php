@@ -5,9 +5,6 @@
                 {{--                {{ config('app.name', 'Transport Business') }}--}}
             </span>
         @else
-            <a class="navbar-brand" href="{{ url('home') }}">
-
-            </a>
         @endguest
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -21,8 +18,10 @@
             @guest()
             @else
                 <ul class="navbar-nav mr-auto d-md-none">
+                    <li class="nav-item"><a class="nav-link" href="{{route('home')}}">Начало</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('truck.index')}}">Камиони</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('reminder.index')}}">Напомяния</a>
+                    <li class="nav-item"><a class="nav-link" href="{{route('report.index')}}">Репорти</a>
                     </li>
                 </ul>
         @endguest

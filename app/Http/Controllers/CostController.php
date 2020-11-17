@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CostRequest;
 use App\Http\Requests\ParkingRequest;
-use App\Http\Requests\UpdateParkingRequest;
+use App\Models\Cost;
 use App\Models\Parking;
 use App\Models\ReportingPeriod;
 use App\Models\Truck;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 
-class ParkingController extends Controller
+class CostController extends Controller
 {
     public function __construct()
     {
@@ -18,21 +20,21 @@ class ParkingController extends Controller
 
     public function showByTruck($truck_id)
     {
-        $parking_lots = Parking::where('truck_id', $truck_id)->orderBy('reporting_period_id', 'desc')->paginate(15);
+        $costs = Cost::where('truck_id', $truck_id)->orderBy('reporting_period_id', 'desc')->paginate(15);
 
-        return view('parking.show_by_truck', compact('parking_lots', 'truck_id'));
+        return view('cost.show_by_truck', compact('costs', 'truck_id'));
     }
 
     public function create($truck_id)
     {
         $truck = Truck::where('id', $truck_id)->get(['id', 'licence_plate'])->first();
 
-        $parking_lots = Parking::where('truck_id', $truck_id)->orderBy('reporting_period_id', 'desc')->take(8)->get();
+        $costs = Cost::where('truck_id', $truck_id)->orderBy('reporting_period_id', 'desc')->take(8)->get();
 
-        return view('parking.create', compact('truck', 'parking_lots'));
+        return view('cost.create', compact('truck', 'costs'));
     }
 
-    public function store(ParkingRequest $request)
+    public function store(CostRequest $request)
     {
         try {
             $reporting_period_id = ReportingPeriod::where('year', $request['year'])->where('month', $request['month'])->firstOrFail()->id;
@@ -42,23 +44,23 @@ class ParkingController extends Controller
         }
 
         $request['reporting_period_id'] = $reporting_period_id;
-        Parking::create($request->all());
+        Cost::create($request->all());
 
-        return redirect()->back()->with('success', 'Успесно добавени разходи за паркинг');
+        return redirect()->back()->with('success', 'Успесно добавени разходи.');
     }
 
     public function edit($id)
     {
-        $parking = Parking::where('id', $id)->firstOrFail();
+        $cost = Cost::where('id', $id)->firstOrFail();
 
-        $truck_id = Parking::where('id', $id)->pluck('truck_id')->first();
+        $truck_id = Cost::where('id', $id)->pluck('truck_id')->first();
 
         $truck = Truck::where('id', $truck_id)->pluck('licence_plate')->first();
 
-        return view('parking.edit', compact('parking', 'truck'));
+        return view('cost.edit', compact('cost', 'truck'));
     }
 
-    public function update(ParkingRequest $request, $id)
+    public function update(CostRequest $request, $id)
     {
         try {
             $reporting_period_id = ReportingPeriod::where('year', $request['year'])->where('month', $request['month'])->firstOrFail()->id;
@@ -69,7 +71,7 @@ class ParkingController extends Controller
 
         $request['reporting_period_id'] = $reporting_period_id;
 
-        Parking::where('id', $id)->update([
+        Cost::where('id', $id)->update([
             'price' => $request['price'],
             'note' => $request['note'],
             'reporting_period_id' => $request['reporting_period_id'],
@@ -81,10 +83,10 @@ class ParkingController extends Controller
 
     public function destroy($id)
     {
-        $truck_id = Parking::where('id', $id)->pluck('truck_id')->firstOrFail();
+        $truck_id = Cost::where('id', $id)->pluck('truck_id')->firstOrFail();
 
-        Parking::destroy($id);
+        Cost::destroy($id);
 
-        return redirect()->route('parking.create', [$truck_id])->with('success', 'Успешно изтрит запис');
+        return redirect()->route('cost.create', [$truck_id])->with('success', 'Успешно изтрит запис');
     }
 }

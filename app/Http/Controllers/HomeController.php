@@ -20,6 +20,11 @@ class HomeController extends Controller
 
     public function welcome()
     {
+        if (auth()->check()) {
+            $reminders = self::getReminders();
+
+            return view('home', compact('reminders'));
+        }
         return view('welcome');
     }
 

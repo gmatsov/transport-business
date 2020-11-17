@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Cost;
 use App\Models\PaidTrip;
 use App\Models\Parking;
 use App\Models\Refuel;
@@ -19,6 +20,7 @@ class ReportService
     private $km_difference;
     private $fuel_consumption;
     private $parking;
+    private $costs;
     private int $reporting_period_id;
 
     public function __construct($data)
@@ -32,6 +34,7 @@ class ReportService
         $this->fuel_consumption = $data['fuel_consumption'];
         $this->reporting_period_id = $this->getReportingPeriodId();
         $this->parking = $data['parking'];
+        $this->costs = $data['costs'];
     }
 
     public function create(): object
@@ -60,10 +63,14 @@ class ReportService
         if ($this->parking) {
             $result->parking = $this->getParkingData();
         }
+        if ($this->costs) {
+            $result->costs = $this->getCosts();
+        }
+
         $result->month = $this->month;
         $result->year = $this->year;
         return $result;
-
+        dd($result);
     }
 
     private function getParkingData()
@@ -125,5 +132,19 @@ class ReportService
     private function getReportingPeriodId(): int
     {
         return ReportingPeriod::where('month', $this->month)->where('year', $this->year)->first()->id;
+    }
+
+    private function getCosts()
+    {
+        $costs['details'] = Cost::where('truck_id', $this->truck_id)
+            ->where('reporting_period_id', $this->reporting_period_id)
+            ->get();
+        $costs['total_sum'] = 0;
+
+        foreach ($costs['details'] as $cost) {
+            $costs['total_sum'] += intval($cost->price);
+        }
+
+        return $costs;
     }
 }

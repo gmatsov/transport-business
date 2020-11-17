@@ -12,12 +12,12 @@ h6,
   text-align: center;
 }
 
-.navbar-brand {
-  background-image: url("/img/logo.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-width: 110px;
-  min-height: 55px;
+.navbar {
+  box-shadow: 0 10px 6px -6px #247ba0;
+}
+
+footer {
+  box-shadow: 0 -10px 6px -6px #247ba0;
 }
 
 .navbar-toggler-icon {

@@ -1,4 +1,10 @@
 <nav class="d-none d-md-block" id="sidebar">
+    <div class="sidebar-header sidebar-logo">
+        <a href="{{route('home')}}" class="btn d-block border-bottom">
+            <img src="{{asset('img/logo.png')}}" alt="logo">
+        </a>
+
+    </div>
     <div class="sidebar-header">
         <h3 class="p-2"><i class="fas fa-home"></i> Начало</h3>
     </div>

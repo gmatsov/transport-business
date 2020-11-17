@@ -69,6 +69,7 @@ const avg_fuel_consumption = new Chartisan({
         debug: true,
     },
     hooks: new ChartisanHooks()
+        .colors(['#ECC94B', '#4299E1', 'red', 'green', 'black', 'purple', 'teal', 'maroon', 'cyan' ])
         .datasets([{type: 'line'}])
         .legend()
         .tooltip(true)
@@ -118,7 +119,7 @@ const paid_trips = new Chartisan({
     },
     hooks: new ChartisanHooks()
         .datasets([{type: 'line'}])
-        .colors(['#32527B', '#6B8EB7', '#BCD3E7'])
+        .colors(['#ECC94B', '#4299E1', 'red', 'green', 'black', 'purple', 'teal', 'maroon', 'cyan' ])
         .tooltip(true)
         .legend(true)
 })

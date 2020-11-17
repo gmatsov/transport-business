@@ -8,13 +8,15 @@ h1, h2, h3, h4, h5, h6, .fas {
 #navbarSupportedContent {
     text-align: center;
 }
-
-.navbar-brand {
-    background-image: url("/img/logo.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-width: 110px;
-    min-height: 55px;
+.navbar {
+    -webkit-box-shadow: 0 10px 6px -6px #247ba0;
+    -moz-box-shadow: 0 10px 6px -6px #247ba0;
+    box-shadow: 0 10px 6px -6px #247ba0;
+}
+footer {
+    -webkit-box-shadow: 0 -10px 6px -6px #247ba0;
+    -moz-box-shadow: 0 -10px 6px -6px #247ba0;
+    box-shadow: 0 -10px 6px -6px #247ba0;
 }
 
 .navbar-toggler-icon {

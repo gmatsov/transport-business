@@ -10,6 +10,16 @@
   font-size: 1.1em;
 }
 
+.truck-menu div {
+  margin: 5px;
+  min-width: 150px;
+}
+
+.truck-menu div a {
+  display: inline-block;
+  width: 100%;
+}
+
 #reminder_count {
   min-width: 10px;
   padding: 3px 7px;

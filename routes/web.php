@@ -56,6 +56,13 @@ Route::put('parking/{parking_id}', 'ParkingController@update')->name('parking.up
 Route::delete('parking/{parking_id}', 'ParkingController@destroy')->name('parking.destroy');
 Route::get('parking/truck/{truck_id}', 'ParkingController@showByTruck')->name('parking.truck');
 
+/* Costs Controller */
+Route::get('cost/create/{truck_id}', 'CostController@create')->name('cost.create');
+Route::get('cost/{cost_id}/edit', 'CostController@edit')->name('cost.edit');
+Route::post('cost', 'CostController@store')->name('cost.store');
+Route::put('cost/{cost_id}', 'CostController@update')->name('cost.update');
+Route::delete('cost/{cost_id}', 'CostController@destroy')->name('cost.destroy');
+Route::get('cost/truck/{cost_id}', 'CostController@showByTruck')->name('cost.truck');
 
 /* Reminder Controller*/
 Route::resource('reminder', 'ReminderController');
