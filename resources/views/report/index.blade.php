@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('scripts')
+    <script src="{{ asset('js/report.js') }}" defer></script>
+
 @endsection
 
 @section('content')
@@ -13,8 +15,7 @@
                 <div class="form-group col-md-4">
                     <label for="truck_id">МПС </label>
                     <select id="truck_id" class="form-control @error('truck_id') is-invalid @enderror" name="truck_id">
-                        <option value="" disabled readonly selected="">Избери</option>
-                        <option value="all" readonly>Всички</option>
+                        <option value="">Всички</option>
                         @foreach($trucks as $truck)
 
                             <option
@@ -83,6 +84,18 @@
         </div>
         <div class="row">
             <div class="form-group col-md-6">
+                <input type="hidden" name="select_all" id="select_all_hidden" value="0">
+                <label>
+                    <input
+                        type="checkbox"
+                        id="select_all"
+                        name="select_all"
+                        value="1"
+                        aria-invalid="false"
+                        {{old('select_all') == 1 ? 'checked' : ''}}>
+                    Избери всички</label>
+            </div>
+            <div class="form-group col-md-6">
                 <input type="hidden" name="km_traveled" id="km_traveled_hidden" value="0">
                 <label>
                     <input
@@ -94,33 +107,9 @@
                         {{old('km_traveled') == 1 ? 'checked' : ''}}>
                     Изминати километри</label>
             </div>
-            <div class="form-group col-md-6">
-                <input type="hidden" name="paid_km_traveled" id="paid_km_traveled_hidden" value="0">
-                <label>
-                    <input
-                        type="checkbox"
-                        id="paid_km_traveled"
-                        name="paid_km_traveled"
-                        value="1"
-                        aria-invalid="false"
-                        {{old('paid_km_traveled') == 1 ? 'checked' : ''}}>
-                    Изминати платени километри</label>
-            </div>
         </div>
 
         <div class="row">
-            <div class="form-group col-md-6">
-                <input type="hidden" name="km_difference" id="km_difference_hidden" value="0">
-                <label>
-                    <input
-                        type="checkbox"
-                        id="km_difference"
-                        name="km_difference"
-                        value="1"
-                        aria-invalid="false"
-                        {{old('km_difference') == 1 ? 'checked' : ''}}>
-                    Разлика между платени и изминати км.</label>
-            </div>
             <div class="form-group col-md-6">
                 <input type="hidden" name="fuel_consumption" id="fuel_consumption_hidden" value="0">
                 <label>
@@ -133,10 +122,23 @@
                         {{old('fuel_consumption') == 1 ? 'checked' : ''}}>
                     Среден разход</label>
             </div>
+            <div class="form-group col-md-6">
+                <input type="hidden" name="km_difference" id="km_difference_hidden" value="0">
+                <label>
+                    <input
+                        type="checkbox"
+                        id="km_difference"
+                        name="km_difference"
+                        value="1"
+                        aria-invalid="false"
+                        {{old('km_difference') == 1 ? 'checked' : ''}}>
+                    Разлика между платени и изминати км.</label>
+            </div>
+
         </div>
         <div class="row">
             <div class="form-group col-md-6">
-                <input type="hidden" name="costs" id="costs" value="0">
+                <input type="hidden" name="costs" id="costs_hidden" value="0">
                 <label>
                     <input
                         type="checkbox"
@@ -146,6 +148,18 @@
                         aria-invalid="false"
                         {{old('costs') == 1 ? 'checked' : ''}}>
                     Разходи</label>
+            </div>
+            <div class="form-group col-md-6">
+                <input type="hidden" name="paid_km_traveled" id="paid_km_traveled_hidden" value="0">
+                <label>
+                    <input
+                        type="checkbox"
+                        id="paid_km_traveled"
+                        name="paid_km_traveled"
+                        value="1"
+                        aria-invalid="false"
+                        {{old('paid_km_traveled') == 1 ? 'checked' : ''}}>
+                    Изминати платени километри</label>
             </div>
         </div>
 

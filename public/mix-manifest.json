@@ -10,6 +10,7 @@
     "/css/truck/show.css": "/css/truck/show.css",
     "/css/create-refuel.css": "/css/create-refuel.css",
     "/js/dashboard.js": "/js/dashboard.js",
+    "/js/report.js": "/js/report.js",
     "/js/truck/create.js": "/js/truck/create.js",
     "/js/truck/edit.js": "/js/truck/edit.js",
     "/js/truck/remove.js": "/js/truck/remove.js",

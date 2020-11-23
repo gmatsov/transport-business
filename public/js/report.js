@@ -81,73 +81,46 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/truck/edit.js":
-/*!************************************!*\
-  !*** ./resources/js/truck/edit.js ***!
-  \************************************/
+/***/ "./resources/js/report.js":
+/*!********************************!*\
+  !*** ./resources/js/report.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$(".submit").click(function (e) {
-  e.preventDefault();
-  var licence_plate = $("input[name=licence_plate]").val();
-  var truck_id = $("input[name=truck_id]").val();
-  var vin = $("input[name=vin]").val();
-  var odometer = $("input[name=odometer]").val();
-  var brand = $("input[name=brand]").val();
-  var model = $("input[name=model]").val();
-  var horse_power = $("input[name=horse_power]").val();
-  var emission_class = $("select[name='emission_class']").children('option:selected').val();
-  var production_year = $("select[name='production_year']").children('option:selected').val();
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-  });
-  $.ajax({
-    type: 'POST',
-    url: '/truck/' + truck_id,
-    data: {
-      '_method': 'PUT',
-      truck_id: truck_id,
-      licence_plate: licence_plate,
-      vin: vin,
-      odometer: odometer,
-      emission_class: emission_class,
-      brand: brand,
-      model: model,
-      production_year: production_year,
-      horse_power: horse_power
-    },
-    success: function success(data) {
-      $("input[name=licence_plater]").val('');
-      $('#messages').html('');
-      $('#messages').append('<div class="alert alert-success">' + data.success + '<button type="button" class="close" data-dismiss="alert">×</button>' + '<div>');
-    },
-    error: function error(data) {
-      $('#messages').html('');
-      $.each(data.responseJSON.errors, function (key, value) {
-        $('#messages').append('<div class="alert alert-danger">' + value + '<button type="button" class="close" data-dismiss="alert">×</button>' + '</div>');
-      });
+$(function () {
+  $("#select_all").change(function () {
+    if ($("#select_all:checkbox:checked").length > 0) {
+      $("#km_traveled").prop("checked", true);
+      $("#km_difference").prop("checked", true);
+      $("#fuel_consumption").prop("checked", true);
+      $("#costs").prop("checked", true);
+      $("#paid_km_traveled").prop("checked", true);
+    } else {
+      $("#km_traveled").prop("checked", false);
+      $("#km_difference").prop("checked", false);
+      $("#fuel_consumption").prop("checked", false);
+      $("#costs").prop("checked", false);
+      $("#paid_km_traveled").prop("checked", false);
     }
   });
 });
 
 /***/ }),
 
-/***/ 5:
-/*!******************************************!*\
-  !*** multi ./resources/js/truck/edit.js ***!
-  \******************************************/
+/***/ 2:
+/*!**************************************!*\
+  !*** multi ./resources/js/report.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\js\truck\edit.js */"./resources/js/truck/edit.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\transport-business\resources\js\report.js */"./resources/js/report.js");
 
 
 /***/ })

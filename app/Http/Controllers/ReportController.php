@@ -32,8 +32,20 @@ class ReportController extends Controller
                 return back()->with('error', 'Началния период не може да бъде след крайния период.')->withInput();
             }
         }
-        $report = (new ReportService($request->all()))->create();
+        if ($request->truck_id == NULL) {
+            $trucks = Truck::all();
+            $report_data = [];
+            foreach ($trucks as $truck) {
+                $data = $request->all();
+                $data['truck_id'] = $truck->id;
 
-        return view('report.show', compact('report'));
+                array_push($report_data, (new ReportService($data))->create());
+            }
+
+        } else {
+            $report_data = (object)[(new ReportService($request->all()))->create()];
+        }
+
+        return view('report.show', compact('report_data'));
     }
 }

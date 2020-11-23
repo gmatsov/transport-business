@@ -66,7 +66,6 @@ class ReportService
         if ($this->costs) {
             $result->costs = $this->getCosts();
         }
-
         $result->start_month = $this->start_month;
         $result->start_year = $this->start_year;
         $result->end_month = $this->end_month;

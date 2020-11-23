@@ -24,7 +24,7 @@ class ReportRequest extends FormRequest
     public function rules()
     {
         return [
-            'truck_id' => 'required|in:all',
+            'truck_id' => 'exists:trucks,id,deleted_at,NULL|nullable',
             'start_month' => 'numeric|between:1,12',
             'end_month' => 'numeric|between:1,12',
             'start_year' => 'numeric|between:1970,2100',

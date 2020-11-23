@@ -16,9 +16,10 @@
 
 #page-content-wrapper {
   min-width: 100vw;
+  height: auto;
 }
 
-e #wrapper.toggled #sidebar-wrapper {
+#wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
 }
 
