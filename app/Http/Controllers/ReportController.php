@@ -22,6 +22,16 @@ class ReportController extends Controller
 
     public function show(ReportRequest $request)
     {
+        if ($request->start_year > $request->end_year) {
+            return back()->with('error', 'Началния период не може да бъде след крайния период.')->withInput();
+
+        }
+
+        if ($request->start_year == $request->end_year) {
+            if ($request->start_month > $request->end_month) {
+                return back()->with('error', 'Началния период не може да бъде след крайния период.')->withInput();
+            }
+        }
         $report = (new ReportService($request->all()))->create();
 
         return view('report.show', compact('report'));

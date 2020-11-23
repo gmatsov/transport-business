@@ -36,7 +36,7 @@ class ChartController extends Controller
                     'SELECT ROUND((SUM(refuels.quantity) / SUM(refuels.trip_odometer))* 100,2) as avg_fuel_consumption
                         FROM refuels
                         WHERE refuels.truck_id = ' . $truck_data->id .
-                    ' AND refuels.reporting_period_id = ' . $i . ' ')[0]->avg_fuel_consumption;
+                    '   AND refuels.reporting_period_id = ' . $i . ' ')[0]->avg_fuel_consumption;
                 array_push($data, $avg_fuel_cons);
             }
 
@@ -68,7 +68,6 @@ class ChartController extends Controller
             array_push($data, $avg_fuel_price);
         }
         array_push($chart['datasets'], (array('name' => 'Цена в Евро', 'values' => $data)));
-
         return $chart;
     }
 

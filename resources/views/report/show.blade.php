@@ -9,7 +9,10 @@
     <div class="custom-print-area">
         <h1 class="text-center">Репорт за {{ $report->licence_plate }}</h1>
         <h5>
-            Отчетен период: {{date("F", mktime(0, 0, 0, $report->month, 10))}} {{ $report->year }}
+            Отчетен период от: {{date("F", mktime(0, 0, 0, $report->start_month, 10))}} {{ $report->start_year }}
+        </h5>
+        <h5>
+            Отчетен период до: {{date("F", mktime(0, 0, 0, $report->end_month, 10))}} {{ $report->end_year }}
         </h5>
         <div class="row mt-3">
             @if(isset( $report->paid_trip_km_traveled ))
@@ -29,16 +32,12 @@
 
         <div class="row">
             @if(isset( $report->paid_trip_km_traveled ))
-                <div class="col-md-3 font-weight-bold">Платена сума</div>
+                <div class="col-md-3 font-weight-bold">Изплатени разходи ТОДО</div>
                 <div class="col-md-1">{{$report->paid_amount}}</div>
             @endif
             @if(isset( $report->fuel_consumption ))
                 <div class="col-md-3 font-weight-bold">Среден разход</div>
                 <div class="col-md-1">{{$report->fuel_consumption}}</div>
-            @endif
-            @if(isset( $report->parking ))
-                <div class="col-md-3 font-weight-bold">Разходи за паркинг</div>
-                <div class="col-md-1">{{$report->parking}}</div>
             @endif
         </div>
     </div>
@@ -49,18 +48,27 @@
                 <div class="row text-center font-weight-bold col-md-12">
                     <h5 class="col-md-12"> Разбивка на платените километри</h5>
                 </div>
-                <div class="row">
-                    <table class="table table-striped col-md-12">
-                        <tr>
-                            <th class="col-md-3">Цена на километър</th>
-                            <th class="col-md-3">Разстояние</th>
+                <div>
+                    <table class="table table-striped text-center">
+                        <tr class="row">
+                            <th class="col-md-4">Цена на километър</th>
+                            <th class="col-md-4">Разстояние</th>
+                            <th class="col-md-4">Сума</th>
                         </tr>
                         @foreach($report->paid_trip_details as $detailed_paid_trip)
-                            <tr>
+                            <tr class="row">
                                 <td class="col-md-4">{{$detailed_paid_trip->price_per_km}} €</td>
                                 <td class="col-md-4">{{$detailed_paid_trip->total_distance}} км.</td>
+                                <td class="col-md-4">{{$detailed_paid_trip->price_per_km * $detailed_paid_trip->total_distance}}
+                                    €
+                                </td>
                             </tr>
                         @endforeach
+                        <tr class="row font-weight-bold">
+                            <td class="col-md-4">Общо:</td>
+                            <td class="col-md-4">{{$report->paid_trip_km_traveled}} км.</td>
+                            <td class="col-md-4">{{$report->paid_amount}} €</td>
+                        </tr>
                     </table>
                 </div>
             </div>

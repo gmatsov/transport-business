@@ -13,6 +13,7 @@
             <tr>
                 <th>Отчетен период</th>
                 <th>Сума</th>
+                <th>Категория</th>
                 <th>Бележка</th>
                 <th></th>
             </tr>
@@ -25,6 +26,7 @@
                         </a>
                     </td>
                     <td>{{$cost->price}}</td>
+                    <td>{{$cost->category->name}}</td>
                     <td>{{$cost->note}}</td>
                     <td>
                         <form action="{{ route('cost.destroy', ['cost_id'=> $cost->id]) }}"

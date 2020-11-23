@@ -24,9 +24,11 @@ class ReportRequest extends FormRequest
     public function rules()
     {
         return [
-            'truck_id' => 'required|exists:trucks,id',
-            'month' => 'numeric|between:1,12',
-            'year' => 'numeric|between:1970,2100',
+            'truck_id' => 'required|in:all',
+            'start_month' => 'numeric|between:1,12',
+            'end_month' => 'numeric|between:1,12',
+            'start_year' => 'numeric|between:1970,2100',
+            'end_year' => 'numeric|between:1970,2100',
         ];
     }
 
@@ -35,9 +37,10 @@ class ReportRequest extends FormRequest
         return [
             'truck_id.required' => 'Полето е задължително',
             'truck_id.exists' => 'Невалиден номер',
-            'month.between' => 'Невалиден месец',
-            'year.between' => 'Невалидна година',
-
+            'start_month.between' => 'Невалиден месец',
+            'end_month.between' => 'Невалиден месец',
+            'start_year.between' => 'Невалидна година',
+            'end_year.between' => 'Невалидна година',
         ];
     }
 }

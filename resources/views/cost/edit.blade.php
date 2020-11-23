@@ -29,36 +29,61 @@
                             @endfor
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="price"><i class="fas fa-euro-sign"></i> Цена</label>
+                    <div class="form-group row">
+                        <label class="d-inline-block col-md-6" for="price"><i class="fas fa-euro-sign"></i> Цена</label>
                         <input type="number" name="price" min="0" step="0.01"
                                placeholder="Цена : {{$cost->price}} "
-                               class="form-control float-right col-md-6  @error('price') is-invalid @enderror"
+                               class="form-control  col-md-6  @error('price') is-invalid @enderror"
                                id="price" value="{{old('price') ?  old('price') : $cost->price}}">
                         @error('price')
-                        <div class="col-md-12 float-right text-right text-danger">{{ $message }}</div>
+                        <div class="col-md-12 text-right text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="note"><i class="fas fa-sticky-note"></i> Бележка</label>
+                    <div class="form-group row">
+                        <label class="d-inline-block col-md-6" for="note"><i class="fas fa-sticky-note"></i>
+                            Бележка</label>
                         <input type="text" step="0.01" min="0.01" max="9.99"
                                placeholder="Старо показание : {{$cost->note}}"
                                name="note"
-                               class="form-control float-right col-md-6  @error('note') is-invalid @enderror"
+                               class="form-control col-md-6  @error('note') is-invalid @enderror"
                                id="note"
                                value="{{old('note') ? old('note') : $cost->note}}">
                         @error('note')
+                        <div class="col-md-12 text-right text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group row">
+                        <label class="d-inline-block col-md-6" for="category"><i class="fas fa-clipboard"></i> Категория</label>
+                        <select name="category" id="category" class="form-control col-md-6">
+                            <option selected disabled>Избери</option>
+
+                            @foreach($categories as $category)
+                                <option disabled class="bg-info text-white">{{$category->name}}</option>
+
+                                @foreach($sub_categories as $sub_category)
+                                    @if($sub_category->main_category_id == $category->id)
+                                        <option value="{{$sub_category->id}}"
+                                            {{$cost->sub_category_id == $sub_category->id ? 'selected' : ''}}>
+                                            {{$sub_category->name}}
+                                        </option>
+                                    @endif
+                                @endforeach
+
+                            @endforeach
+                        </select>
+
+                        @error('category')
                         <div class="col-md-12 float-right text-right text-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group text-center">
-                        <input type="submit" value="Промени" class="btn btn-success submit mt-4" id="submit">
+                        <input type="submit" value="Промени" class="btn btn-sm blue-btn submit mt-4" id="submit">
                     </div>
                 </form>
                 <form action="{{ route('cost.destroy', ['cost_id'=> $cost->id]) }}" method="POST">
                     @method('delete')
                     @csrf
-                    <input type="submit" value="Изтрии" class="btn btn-danger"
+                    <input type="submit" value="Изтрии" class="btn btn-sm btn-danger"
                            onclick="return confirm('Сигурен ли си че искаш да изтриеш?');">
                 </form>
             </div>

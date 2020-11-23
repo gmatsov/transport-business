@@ -25,6 +25,7 @@ class CostRequest extends FormRequest
     {
         return [
             'price' => 'required|numeric|min:0',
+            'category' => 'required|exists:costs_sub_categories,id'
         ];
     }
 
@@ -32,7 +33,8 @@ class CostRequest extends FormRequest
     {
         return [
             'price.required' => 'Задължително поле.',
-            'price.min' => 'Минимална сума 0.'
+            'price.min' => 'Минимална сума 0.',
+            'category.exists' => 'Невалидна категория.',
         ];
     }
 }

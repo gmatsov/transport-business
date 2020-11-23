@@ -90,5 +90,9 @@ main {
   .custom-print-button {
     display: none !important;
   }
+
+  .custom-print-area {
+    width: 100%;
+  }
 }
 

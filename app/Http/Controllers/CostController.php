@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CostRequest;
 use App\Http\Requests\ParkingRequest;
 use App\Models\Cost;
+use App\Models\CostCategory;
+use App\Models\CostSubCategory;
 use App\Models\Parking;
 use App\Models\ReportingPeriod;
 use App\Models\Truck;
@@ -30,8 +32,9 @@ class CostController extends Controller
         $truck = Truck::where('id', $truck_id)->get(['id', 'licence_plate'])->first();
 
         $costs = Cost::where('truck_id', $truck_id)->orderBy('reporting_period_id', 'desc')->take(8)->get();
-
-        return view('cost.create', compact('truck', 'costs'));
+        $categories = CostCategory::all();
+        $sub_categories = CostSubCategory::all();
+        return view('cost.create', compact('truck', 'costs', 'categories', 'sub_categories'));
     }
 
     public function store(CostRequest $request)
@@ -44,6 +47,7 @@ class CostController extends Controller
         }
 
         $request['reporting_period_id'] = $reporting_period_id;
+        $request['sub_category_id'] = $request->category;
         Cost::create($request->all());
 
         return redirect()->back()->with('success', 'Успесно добавени разходи.');
@@ -52,12 +56,12 @@ class CostController extends Controller
     public function edit($id)
     {
         $cost = Cost::where('id', $id)->firstOrFail();
-
         $truck_id = Cost::where('id', $id)->pluck('truck_id')->first();
-
         $truck = Truck::where('id', $truck_id)->pluck('licence_plate')->first();
+        $categories = CostCategory::all();
+        $sub_categories = CostSubCategory::all();
 
-        return view('cost.edit', compact('cost', 'truck'));
+        return view('cost.edit', compact('cost', 'truck', 'categories', 'sub_categories'));
     }
 
     public function update(CostRequest $request, $id)
@@ -69,12 +73,11 @@ class CostController extends Controller
             return redirect()->back()->with('error', 'Навалиден отчетен период');
         }
 
-        $request['reporting_period_id'] = $reporting_period_id;
-
         Cost::where('id', $id)->update([
             'price' => $request['price'],
             'note' => $request['note'],
-            'reporting_period_id' => $request['reporting_period_id'],
+            'reporting_period_id' => $reporting_period_id,
+            'sub_category_id' => $request['category'],
         ]);
 
         return redirect()->back()->with('success', 'Успешно редакция');
@@ -83,8 +86,7 @@ class CostController extends Controller
 
     public function destroy($id)
     {
-        $truck_id = Cost::where('id', $id)->pluck('truck_id')->firstOrFail();
-
+        $truck_id = Cost::where('id', $id)->firstOrFail()->truck_id;
         Cost::destroy($id);
 
         return redirect()->route('cost.create', [$truck_id])->with('success', 'Успешно изтрит запис');

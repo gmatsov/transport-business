@@ -19,6 +19,8 @@ class CreateCostsTable extends Migration
             $table->foreign('reporting_period_id')->references('id')->on('reporting_periods');
             $table->unsignedBigInteger('truck_id');
             $table->foreign('truck_id')->references('id')->on('trucks');
+            $table->unsignedBigInteger('sub_category_id');
+            $table->foreign('sub_category_id')->references('id')->on('costs_sub_categories');
             $table->decimal('price');
             $table->string('note')->nullable();
             $table->timestamps();

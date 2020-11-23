@@ -25,12 +25,6 @@
             </a>
         </div>
         <div>
-            <a href="{{route('parking.create', $truck->id)}}" id="add_parking_tax"
-               class="btn btn-outline-info">
-                <i class="fas fa-plus"></i> Паркинги
-            </a>
-        </div>
-        <div>
             <a href="{{route('cost.create', $truck->id)}}" id="add_costs"
                class="btn btn-outline-info">
                 <i class="fas fa-plus"></i> Разходи
@@ -122,7 +116,7 @@
                         class="float-right">{{$truck->emissionClass->emission_category}}</span></div>
             @endif
             @if(isset($truck->production_year))
-                <div class="border-bottom"><span><i class="far fa-calendar-alt mr-2"></i> Година производство</span>
+                <div class="border-bottom"><span><i class="fas fa-calendar-alt mr-2"></i> Година производство</span>
                     <span
                         class="float-right">{{$truck->production_year}}</span></div>
             @endif
@@ -182,49 +176,49 @@
             <div id="reminder_tab" style="display: none">
 
                 @foreach($reminders as $reminder)
-
                     <div class="reminder-body">
                         <div class="reminder-info ">
-                            <div>
+                            <div class="row">
                                 <a href="{{route('reminder.show', $reminder->id)}}"
-                                   class="reminder-header-text">{{$reminder->title}}</a>
-                                <span class="reminder-actions float-right">
-                     <form method="post" action="{{route('reminder.complete', $reminder->id)}}">
-                @csrf
+                                   class="reminder-header-text d-inline-block col-md-6">{{$reminder->title}}
+                                </a>
+                                <div class="reminder-due col-md-6">
+                                    @if($reminder->by_odometer != NULL)
+                                        <div class="">
+                                            @if(($reminder->by_odometer - $reminder->km_before - $reminder->truckData->odometer) >= 0)
+                                                След {{$reminder->by_odometer - $reminder->km_before - $reminder->truckData->odometer}}
+                                                км
+                                            @else
+                                                Просрочено с <span
+                                                    class="text-danger"> {{$reminder->by_odometer - $reminder->km_before - $reminder->truckData->odometer}}</span>
+                                                км
+                                            @endif
 
-                <button class="btn btn-success reminder-complete-button"> Отбележи изпълнено</button>
-            </form>
-                </span>
-                            </div>
-                            <div class="reminder-due">
-                                @if($reminder->by_odometer != NULL)
-                                    <div class="">
-                                        @if(($reminder->by_odometer - $reminder->km_before - $reminder->truckData->odometer) >= 0)
-                                            След {{$reminder->by_odometer - $reminder->km_before - $reminder->truckData->odometer}}
-                                            км
-                                        @else
-                                            Просрочено с <span
-                                                class="text-danger"> {{$reminder->by_odometer - $reminder->km_before - $reminder->truckData->odometer}}</span>
-                                            км
-                                        @endif
+                                        </div>
+                                    @endif
+                                    @if($reminder->by_date != NULL)
+                                        <div class="">
 
-                                    </div>
-                                @endif
-                                @if($reminder->by_date != NULL)
-                                    <div class="">
-
-                                        @if(date('Y-m-d', strtotime('-'.$reminder->days_before.' days', strtotime($reminder->by_date))) >=  date('Y-m-d'))
-                                            До {{date('d M Y', strtotime('-'.$reminder->days_before.' days', strtotime($reminder->by_date)))}}
-                                            г.
-                                        @else
-                                            Просрочено с <span
-                                                class="text-danger">
+                                            @if(date('Y-m-d', strtotime('-'.$reminder->days_before.' days', strtotime($reminder->by_date))) >=  date('Y-m-d'))
+                                                До {{date('d M Y', strtotime('-'.$reminder->days_before.' days', strtotime($reminder->by_date)))}}
+                                                г.
+                                            @else
+                                                Просрочено с <span
+                                                    class="text-danger">
                                                 {{abs((strtotime('-'.$reminder->days_before.' days', strtotime($reminder->by_date))) - strtotime(today()))/ (60 * 60 * 24)}}
                                             </span>
-                                            дни
-                                        @endif
-                                    </div>
-                                @endif
+                                                дни
+                                            @endif
+                                        </div>
+                                    @endif
+                                </div>
+
+                                <div class="reminder-actions col-md-12 text-right">
+                                    <form method="post" action="{{route('reminder.complete', $reminder->id)}}">
+                                        @csrf
+                                        <button class="btn btn-success reminder-complete-button"> Отбележи изпълнено</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
 

@@ -5,8 +5,8 @@ use Illuminate\Database\Seeder;
 
 class ReportingPeriodSeeder extends Seeder
 {
-    private const STARTING_YEAR = 2020;
-    private const NUMBER_OF_YEARS = 20;
+    private const STARTING_YEAR = 2019;
+    private const NUMBER_OF_YEARS = 30;
     private const NUMBER_OF_MONTHS = 12;
 
     /**

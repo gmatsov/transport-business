@@ -48,14 +48,6 @@ Route::put('paid-trip/{paid_trip_id}', 'PaidTripController@update')->name('paid-
 Route::delete('paid-trip/{paid_trip_id}', 'PaidTripController@destroy')->name('paid-trip.destroy');
 Route::get('paid-trip/truck/{truck_id}', 'PaidTripController@showByTruck')->name('paid-trip.truck');
 
-/* Parking Controller */
-Route::get('parking/create/{truck_id}', 'ParkingController@create')->name('parking.create');
-Route::get('parking/{parking_id}/edit', 'ParkingController@edit')->name('parking.edit');
-Route::post('parking', 'ParkingController@store')->name('parking.store');
-Route::put('parking/{parking_id}', 'ParkingController@update')->name('parking.update');
-Route::delete('parking/{parking_id}', 'ParkingController@destroy')->name('parking.destroy');
-Route::get('parking/truck/{truck_id}', 'ParkingController@showByTruck')->name('parking.truck');
-
 /* Costs Controller */
 Route::get('cost/create/{truck_id}', 'CostController@create')->name('cost.create');
 Route::get('cost/{cost_id}/edit', 'CostController@edit')->name('cost.edit');

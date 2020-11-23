@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\Cost;
 use App\Models\PaidTrip;
-use App\Models\Parking;
 use App\Models\Refuel;
 use App\Models\ReportingPeriod;
 use App\Models\Truck;
@@ -13,27 +12,31 @@ use Illuminate\Support\Facades\DB;
 class ReportService
 {
     private $truck_id;
-    private $month;
-    private $year;
+    private $start_month;
+    private $start_year;
+    private $end_month;
+    private $end_year;
     private $km_traveled;
     private $paid_km_traveled;
     private $km_difference;
     private $fuel_consumption;
-    private $parking;
     private $costs;
-    private int $reporting_period_id;
+    private int $start_reporting_period_id;
+    private int $end_reporting_period_id;
 
     public function __construct($data)
     {
         $this->truck_id = $data['truck_id'];
-        $this->month = $data['month'];
-        $this->year = $data['year'];
+        $this->start_month = $data['start_month'];
+        $this->start_year = $data['start_year'];
+        $this->end_month = $data['end_month'];
+        $this->end_year = $data['end_year'];
         $this->km_traveled = $data['km_traveled'];
         $this->paid_km_traveled = $data['paid_km_traveled'];
         $this->km_difference = $data['km_difference'];
         $this->fuel_consumption = $data['fuel_consumption'];
-        $this->reporting_period_id = $this->getReportingPeriodId();
-        $this->parking = $data['parking'];
+        $this->start_reporting_period_id = $this->getStartReportingPeriodId();
+        $this->end_reporting_period_id = $this->getEndReportingPeriodId();
         $this->costs = $data['costs'];
     }
 
@@ -60,31 +63,23 @@ class ReportService
             $result->fuel_consumption = $this->getFuelConsumption();
         }
 
-        if ($this->parking) {
-            $result->parking = $this->getParkingData();
-        }
         if ($this->costs) {
             $result->costs = $this->getCosts();
         }
 
-        $result->month = $this->month;
-        $result->year = $this->year;
-        return $result;
-        dd($result);
-    }
+        $result->start_month = $this->start_month;
+        $result->start_year = $this->start_year;
+        $result->end_month = $this->end_month;
+        $result->end_year = $this->end_year;
 
-    private function getParkingData()
-    {
-        return Parking::where('truck_id', $this->truck_id)
-            ->where('reporting_period_id', $this->reporting_period_id)
-            ->pluck('price')
-            ->sum();
+        return $result;
     }
 
     private function getPaidKm()
     {
         return PaidTrip::where('truck_id', $this->truck_id)
-            ->where('reporting_period_id', $this->reporting_period_id)
+            ->where('reporting_period_id', '>=', $this->start_reporting_period_id)
+            ->where('reporting_period_id', '<=', $this->end_reporting_period_id)
             ->pluck('distance')
             ->sum();
     }
@@ -93,7 +88,9 @@ class ReportService
     {
         $paid_mount = DB::select(
             'SELECT sum(distance*price_per_km) as paid_amount FROM paid_trips
-                    WHERE truck_id = 1 AND reporting_period_id = 11'
+                   WHERE truck_id = ' . $this->truck_id . '
+                   AND reporting_period_id >= ' . $this->start_reporting_period_id . '
+                   AND reporting_period_id <= ' . $this->end_reporting_period_id
         );
 
         return $paid_mount[0]->paid_amount;
@@ -103,7 +100,9 @@ class ReportService
     {
         return DB::select(
             'SELECT price_per_km, SUM(distance) AS total_distance FROM paid_trips
-                    WHERE truck_id = 1 AND reporting_period_id = 11
+                    WHERE truck_id = ' . $this->truck_id . '
+                    AND reporting_period_id >= ' . $this->start_reporting_period_id . '
+                    AND reporting_period_id <=' . $this->end_reporting_period_id . '
                     GROUP BY price_per_km'
         );
     }
@@ -111,7 +110,8 @@ class ReportService
     private function getTraveledKm()
     {
         return Refuel::where('truck_id', $this->truck_id)
-            ->where('reporting_period_id', $this->reporting_period_id)
+            ->where('reporting_period_id', '>=', $this->start_reporting_period_id)
+            ->where('reporting_period_id', '<=', $this->end_reporting_period_id)
             ->pluck('trip_odometer')
             ->sum();
     }
@@ -119,25 +119,35 @@ class ReportService
     private function getUsedQuantity()
     {
         return Refuel::where('truck_id', $this->truck_id)
-            ->where('reporting_period_id', $this->reporting_period_id)
+            ->where('reporting_period_id', '>=', $this->start_reporting_period_id)
+            ->where('reporting_period_id', '<=', $this->end_reporting_period_id)
             ->pluck('quantity')
             ->sum();
     }
 
     private function getFuelConsumption()
     {
+        if ($this->getUsedQuantity() == 0) {
+            return 0;
+
+        }
         return number_format(((float)$this->getUsedQuantity() * 100) / $this->getTraveledKm(), 2, '.', ' ');
     }
 
-    private function getReportingPeriodId(): int
+    private function getStartReportingPeriodId(): int
     {
-        return ReportingPeriod::where('month', $this->month)->where('year', $this->year)->first()->id;
+        return ReportingPeriod::where('month', $this->start_month)->where('year', $this->start_year)->first()->id;
+    }
+
+    private function getEndReportingPeriodId()
+    {
+        return ReportingPeriod::where('month', $this->end_month)->where('year', $this->end_year)->first()->id;
     }
 
     private function getCosts()
     {
         $costs['details'] = Cost::where('truck_id', $this->truck_id)
-            ->where('reporting_period_id', $this->reporting_period_id)
+            ->where('reporting_period_id', $this->start_reporting_period_id)
             ->get();
         $costs['total_sum'] = 0;
 

@@ -92,7 +92,8 @@ main {
     #sidebar-wrapper, .custom-print-button {
         display: none !important;
     }
-    .custom-print-area {
 
+    .custom-print-area {
+        width: 100%;
     }
 }
