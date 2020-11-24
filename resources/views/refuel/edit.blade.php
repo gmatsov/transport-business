@@ -44,7 +44,9 @@
 
             <div class="form-group">
                 <label for="current_odometer"><i class="fas fa-tachometer-alt"></i> Километраж</label>
-                <input type="number" class="form-control float-right col-md-6 @error('current_odometer') is-invalid @enderror" name="current_odometer"
+                <input type="number"
+                       class="form-control float-right col-md-6 @error('current_odometer') is-invalid @enderror"
+                       name="current_odometer"
                        id="current_odometer" value="{{$refuel->current_odometer}}">
             </div>
             @error('current_odometer')
@@ -53,7 +55,8 @@
 
             <div class="form-group">
                 <label for="note"><i class="far fa-clipboard"></i> Бележка</label>
-                <textarea type="text" class="form-control float-right col-md-6 @error('note') is-invalid @enderror" name="note"
+                <textarea type="text" class="form-control float-right col-md-6 @error('note') is-invalid @enderror"
+                          name="note"
                           id="current_odometer"
                           placeholder="Бележка" rows="1">{{$refuel->note}}</textarea>
             </div>
@@ -62,9 +65,9 @@
             @enderror
 
             <div class="form-group text-center">
-                <input type="submit" value="Промени" class="btn btn-success submit mt-4" id="submit">
+                <input type="submit" value="Промени" class="btn btn-sm blue-btn mt-4" id="submit">
             </div>
         </form>
     </div>
-    <div class="col-md-12 text-center"><a href="{{route('truck.index')}}" class="btn btn-success m-4">Назад</a>
+    <div class="col-md-12 text-center"><a href="{{route('truck.index')}}" class="btn btn-sm blue-btn m-4">Назад</a>
 @endsection

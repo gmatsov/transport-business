@@ -71,13 +71,13 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="note"><i class="far fa-clipboard"></i> Бележка</label>
+                        <label for="note"><i class="fas fa-clipboard"></i> Бележка</label>
                         <textarea type="text" class="form-control float-right col-md-6" name="note"
                                   id="current_odometer"
                                   placeholder="Бележка" rows="1"></textarea>
                     </div>
                     <div class="form-group text-center">
-                        <input type="submit" value="Добави" class="btn btn-success submit mt-4" id="submit">
+                        <input type="submit" value="Добави" class="btn btn-sm blue-btn submit mt-4" id="submit">
                     </div>
                 </form>
 
@@ -110,7 +110,7 @@
                     @endforeach
                 </div>
                 <div class="col-md-12 text-center"><a href="{{route('truck.show', $truck->id)}}"
-                                                      class="btn btn-success m-4">Назад към камиона</a>
+                                                      class="btn btn-sm blue-btn m-4">Назад към камиона</a>
                 </div>
             </div>
         </div>
