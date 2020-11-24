@@ -28,12 +28,11 @@
         </div>
     @endif
     <div class="row">
-        <div id="traveled_km_chart" style="height: 250px ;" class="col-md-6">
-            <h4 class="text-center">Изминати километри</h4>
-        </div>
-
         <div id="avg_fuel_consumption_chart" style="height: 250px;" class="col-md-6">
             <h4 class="text-center">Среден разход в литри</h4>
+        </div>
+        <div id="traveled_km_chart" style="height: 250px ;" class="col-md-6">
+            <h4 class="text-center">Изминати километри</h4>
         </div>
         <div id="paid_trips_chart" style="height: 250px;" class="col-md-6">
             <h4 class="text-center">Платени километри</h4>
